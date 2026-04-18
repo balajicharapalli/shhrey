@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shreyas U M & Associates | Chartered Accountants</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: #fff; color: #333; }
+
+header { background: #0d1b2a; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+
+.logo { color: white; font-size: 22px; font-weight: bold; text-decoration: none; }
+
+/* NAV */
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 5px; }
+nav ul li { position: relative; }
+nav ul li a { color: white; text-decoration: none; padding: 10px 15px; display: block; font-size: 14px; transition: 0.3s; }
+nav ul li a:hover { background: #1b263b; border-radius: 4px; }
+
+/* DROPDOWN */
+.dropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    top: 100%;
+    left: 0;
+    min-width: 260px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 0 0 4px 4px;
+    padding: 10px 0;
+}
+.dropdown li a {
+    color: #0d1b2a;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 12px 20px;
+}
+.dropdown li a:hover { background: #f8f9fa; color: #0066cc; }
+
+.show { display: block; }
+
+/* MOBILE */
+.menu-toggle { display: none; font-size: 26px; color: white; cursor: pointer; }
+
+@media(max-width:768px){
+    .menu-toggle { display:block; }
+    nav { display:none; width:100%; }
+    nav.active { display:block; }
+    nav ul { flex-direction:column; background:#0d1b2a; width:100%; }
+    .dropdown { position:static; box-shadow:none; }
+}
+
+/* HERO */
+.hero {
+    padding: 100px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(13,27,42,0.88) 0%, rgba(27,38,59,0.82) 100%),
+    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&q=85&fit=crop') center/cover no-repeat;
+    color: white;
+}
+
+/* SECTION */
+.section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+.services { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
+
+/* CARD */
+.card { background: #fff; padding: 0; width: 300px; border: 1px solid #e0e0e0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 12px; transition: 0.3s; display: flex; flex-direction: column; overflow: hidden; }
+.card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+.card-img { width: 100%; height: 185px; object-fit: cover; display: block; }
+.card-body { padding: 28px 28px 32px; display: flex; flex-direction: column; flex: 1; }
+.card-body h3 { margin: 0 0 10px; font-size: 18px; color: #0d1b2a; }
+.card-body p { margin: 0 0 20px; font-size: 14px; color: #555; flex: 1; }
+.card a { display: inline-block; text-decoration: none; color: #0066cc; font-weight: bold; border: 2px solid #0066cc; padding: 10px 25px; border-radius: 6px; transition: 0.3s; align-self: center; margin-top: auto; }
+.card a:hover { background: #0066cc; color: white; }
+
+/* FOOTER */
+footer { background: #0d1b2a; color: #afb3b8; text-align: center; padding: 40px 20px; margin-top: 60px; font-size: 14px; }
+
+.footer-social { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; flex-wrap: wrap; }
+.footer-social a { color: #afb3b8; text-decoration: none; font-size: 13px; }
+.footer-social a:hover { color: #ffffff; }
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html" class="logo">Shreyas U M & Associates</a>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="navMenu">
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li>
+<a href="#" onclick="toggleDropdown(event,'business')">Start A Business ▾</a>
+<ul class="dropdown" id="business">
+<li><a href="start-a-business/association-of-persons.html">Association of Persons</a></li>
+<li><a href="start-a-business/branch-liaison-office.html">Branch Liaison Office</a></li>
+<li><a href="start-a-business/limited-liability-partnership.html">LLP Registration</a></li>
+<li><a href="start-a-business/one-person-company.html">One Person Company</a></li>
+<li><a href="start-a-business/partnership-firms.html">Partnership Firms</a></li>
+<li><a href="start-a-business/private-limited-company.html">Private Limited Company</a></li>
+<li><a href="start-a-business/proprietary-concern.html">Proprietary Concern</a></li>
+<li><a href="start-a-business/section-8-company.html">Section 8 Company</a></li>
+<li><a href="start-a-business/subsidiary-company.html">Subsidiary Company</a></li>
+<li><a href="start-a-business/trusts-and-societies.html">Trusts and Societies</a></li>
+</ul>
+</li>
+
+<li>
+<a href="#" onclick="toggleDropdown(event,'reports')">Reports ▾</a>
+<ul class="dropdown" id="reports">
+<li><a href="Reports/business-reports.html">Business Reports</a></li>
+<li><a href="Reports/funding-solutions.html">Funding Solutions</a></li>
+<li><a href="Reports/legal-documentation.html">Legal Documentation</a></li>
+<li><a href="Reports/reports-main.html">Reports Main</a></li>
+</ul>
+</li>
+
+<li><a href="aboutus.html">About Us</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+</nav>
+</header>
+
+<!-- YOUR ORIGINAL CONTENT (UNCHANGED) -->
+<section class="hero">
+<h1>Chartered Accountants</h1>
+<p>Professional financial solutions and business registration services.</p>
+</section>
+
+<section class="section">
+<div class="services">
+
+<div class="card">
+<img class="card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80&fit=crop">
+<div class="card-body">
+<h3>Project Reports</h3>
+<p>Expertly crafted business reports and funding solutions.</p>
+<a href="Reports/reports-main.html">View Reports</a>
+</div>
+</div>
+
+<div class="card">
+<img class="card-img" src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80&fit=crop">
+<div class="card-body">
+<h3>New Business Setup</h3>
+<p>Register your entity: Pvt Ltd, LLP, Partnership, or OPC.</p>
+<a href="start-a-business/start-business-main.html">Get Started</a>
+</div>
+</div>
+
+<div class="card">
+<img class="card-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop">
+<div class="card-body">
+<h3>Compliance</h3>
+<p>Trade License, TDS, and Tax Residency Certificates.</p>
+<a href="Compliance/audit-compliance-main.html">Learn More</a>
+</div>
+</div>
+
+<div class="card">
+<img class="card-img" src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80&fit=crop">
+<div class="card-body">
+<h3>Business Valuation</h3>
+<p>Accurate and credible valuation of your business.</p>
+<a href="business-valuation.html">Learn More</a>
+</div>
+</div>
+
+<div class="card">
+<img class="card-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&fit=crop">
+<div class="card-body">
+<h3>Forensic Audit</h3>
+<p>Detect fraud and financial irregularities.</p>
+<a href="forensic-audit.html">Learn More</a>
+</div>
+</div>
+
+<div class="card">
+<img class="card-img" src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=600&q=80&fit=crop">
+<div class="card-body">
+<h3>Portfolio Management</h3>
+<p>Maximise returns and manage risk.</p>
+<a href="portfolio-management.html">Learn More</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<footer>
+<div class="footer-social">
+<a href="#">📘 Facebook</a>
+<a href="#">📸 Instagram</a>
+<a href="#">💼 LinkedIn</a>
+</div>
+<p>© 2026 Shreyas U M & Associates | Chartered Accountants</p>
+</footer>
+
+<a href="https://wa.me/15551537594?text=Hi%20I%20need%20CA%20services" target="_blank"
+style="position: fixed; bottom: 20px; right: 20px; background:#25D366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; text-decoration:none;">
+💬
+</a>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+
+function toggleDropdown(e,id){
+    e.preventDefault();
+    document.getElementById(id).classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

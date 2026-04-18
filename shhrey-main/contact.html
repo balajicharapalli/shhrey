@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Shreyas U M & Associates</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:#333;background:#fff;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all .3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0066cc}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav li a:hover,nav li a.active{color:#0066cc;border-bottom-color:#0066cc;background:rgba(0,102,204,.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── PAGE HEADER ── */
+.page-header{
+    position:relative;color:#fff;
+    padding:100px 20px 85px;text-align:center;overflow:hidden;
+    background:linear-gradient(135deg,rgba(0,82,163,0.92) 0%,rgba(0,50,110,0.95) 100%),
+               url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.page-header::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.07) 0%,transparent 65%);
+    pointer-events:none;
+}
+.page-header h1{
+    font-family:'Playfair Display',serif;
+    font-size:50px;margin-bottom:18px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.page-header p{
+    font-size:17px;max-width:650px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:auto;padding:65px 20px 70px}
+
+/* ── CONTACT DETAILS STRIP ── */
+.contact-strip{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;margin-bottom:60px;
+}
+.contact-strip-card{
+    background:#fff;border:1px solid #e4edf7;border-radius:14px;
+    padding:30px 24px;text-align:center;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+}
+.contact-strip-card:hover{transform:translateY(-7px);box-shadow:0 14px 36px rgba(0,102,204,.15);border-color:#0066cc}
+.contact-strip-icon{
+    width:54px;height:54px;background:linear-gradient(135deg,#0066cc,#004999);
+    color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:22px;margin:0 auto 16px;
+    box-shadow:0 6px 18px rgba(0,102,204,.28);
+    transition:transform .3s ease;
+}
+.contact-strip-card:hover .contact-strip-icon{transform:scale(1.1) rotate(-5deg)}
+.contact-strip-card h4{font-size:13px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+.contact-strip-card a,.contact-strip-card p{font-size:15px;font-weight:600;color:#1a2332;line-height:1.55}
+.contact-strip-card a:hover{color:#0066cc}
+
+/* ── TWO-COL LAYOUT ── */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+
+/* ── LEFT SIDE ── */
+.contact-info-side h2{
+    font-family:'Playfair Display',serif;
+    font-size:28px;color:#1a2332;margin-bottom:18px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;
+}
+.contact-info-side p{color:#555;font-size:14px;line-height:1.85;margin-bottom:24px}
+
+.info-rows{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+.info-row{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:16px 18px;background:#f8faff;border:1px solid #e4edf7;
+    border-radius:10px;transition:box-shadow .3s,border-color .3s;
+}
+.info-row:hover{box-shadow:0 6px 20px rgba(0,102,204,.1);border-color:#b8d0f0}
+.info-row-icon{
+    width:38px;height:38px;min-width:38px;
+    background:linear-gradient(135deg,#0066cc,#004999);
+    color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-size:16px;box-shadow:0 3px 10px rgba(0,102,204,.22);
+}
+.info-row-text strong{display:block;font-size:12px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px}
+.info-row-text a,.info-row-text span{font-size:14px;color:#1a2332;font-weight:500}
+.info-row-text a:hover{color:#0066cc}
+
+.hours-box{
+    background:linear-gradient(135deg,#e8f0f7,#f0f6ff);
+    border-left:4px solid #0066cc;border-radius:0 10px 10px 0;
+    padding:18px 20px;
+}
+.hours-box h4{color:#0066cc;font-size:14px;font-weight:700;margin-bottom:10px}
+.hours-box p{font-size:13px;color:#555;line-height:1.8;margin:0}
+
+/* ── CONTACT PHOTO ── */
+.contact-photo{
+    width:100%;height:220px;object-fit:cover;border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.11);display:block;margin-top:28px;
+    transition:transform .5s ease,box-shadow .5s ease;
+}
+.contact-photo:hover{transform:scale(1.02);box-shadow:0 14px 36px rgba(0,0,0,.16)}
+
+/* ── FORM SIDE ── */
+.form-side h2{
+    font-family:'Playfair Display',serif;
+    font-size:28px;color:#1a2332;margin-bottom:18px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;
+}
+.form-side p{color:#555;font-size:14px;line-height:1.75;margin-bottom:24px}
+
+.contact-form{
+    background:#fff;border:1px solid #e4edf7;border-radius:16px;
+    padding:36px 32px;box-shadow:0 6px 28px rgba(0,0,0,.07);
+}
+.form-group{margin-bottom:20px}
+.form-group label{
+    display:block;font-size:13px;font-weight:600;color:#1a2332;
+    margin-bottom:7px;letter-spacing:.3px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;padding:12px 15px;border:1.5px solid #d8e6f3;
+    border-radius:8px;font-family:'DM Sans',sans-serif;
+    font-size:14px;color:#333;background:#fafcff;
+    transition:border-color .3s,box-shadow .3s;outline:none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#0066cc;box-shadow:0 0 0 3px rgba(0,102,204,.1);
+    background:#fff;
+}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+.submit-btn{
+    width:100%;padding:14px;
+    background:linear-gradient(135deg,#0066cc,#004999);
+    color:#fff;border:none;border-radius:8px;
+    font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;
+    cursor:pointer;transition:all .3s ease;
+    box-shadow:0 4px 16px rgba(0,102,204,.3);
+    letter-spacing:.3px;
+}
+.submit-btn:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(0,102,204,.4)}
+.submit-btn:active{transform:translateY(0)}
+
+#responseMessage .success{
+    display:flex;align-items:center;gap:10px;
+    background:#e6f9ef;border:1px solid #52c97a;color:#1a7a3c;
+    padding:14px 18px;border-radius:8px;font-size:14px;font-weight:500;
+    margin-top:16px;animation:fadeDown .4s ease;
+}
+#responseMessage .error{
+    display:flex;align-items:center;gap:10px;
+    background:#fdecea;border:1px solid #e57373;color:#c0392b;
+    padding:14px 18px;border-radius:8px;font-size:14px;font-weight:500;
+    margin-top:16px;animation:fadeDown .4s ease;
+}
+
+/* ── MAP PLACEHOLDER ── */
+.map-section{margin-top:60px}
+.map-section h2{
+    font-family:'Playfair Display',serif;
+    font-size:26px;color:#1a2332;margin-bottom:20px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:12px;
+}
+.map-img{
+    width:100%;height:300px;object-fit:cover;border-radius:14px;
+    box-shadow:0 8px 28px rgba(0,0,0,.11);display:block;
+    transition:transform .5s ease;
+}
+.map-img:hover{transform:scale(1.012)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:#fff}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:#fff}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+    .contact-layout{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+    .page-header h1{font-size:32px}
+    .form-row{grid-template-columns:1fr}
+    .contact-form{padding:24px 18px}
+    nav ul{flex-direction:column;gap:0}
+    nav li a{padding:12px 14px}
+}
+    </style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+<div class="header-top-inner">
+<div class="header-top-left">
+<a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+<span>Call +91 91416 35572</span>
+</div>
+<div class="header-top-right">
+<a href="index.html">Back to Home</a>
+</div>
+</div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+<div class="header-inner">
+<a href="index.html" class="logo">Shreyas U M & Associates</a>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="start-a-business/start-business-main.html">Start A Business</a></li>
+<li><a href="Registrations/income-tax-main.html">Registrations</a></li>
+<li><a href="nri-services.html">NRI Services</a></li>
+<li><a href="Compliance/audit-compliance-main.html">Compliance</a></li>
+<li><a href="contact.html" class="active">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+<div class="breadcrumb-inner">
+<a href="index.html">Home</a> &rsaquo; <span>Contact Us</span>
+</div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+<h1>Contact Us</h1>
+<p>We're here to help. Reach out for a consultation or any enquiry — our team responds promptly.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Contact Details Strip -->
+    <div class="contact-strip reveal">
+        <div class="contact-strip-card">
+            <div class="contact-strip-icon">📞</div>
+            <h4>Phone</h4>
+            <a href="tel:+919141635572">+91 91416 35572</a>
+        </div>
+        <div class="contact-strip-card">
+            <div class="contact-strip-icon">📧</div>
+            <h4>Email</h4>
+            <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+        </div>
+        <div class="contact-strip-card">
+            <div class="contact-strip-icon">📍</div>
+        </div>
+        <div class="contact-strip-card">
+            <div class="contact-strip-icon">🕐</div>
+                </div>
+    </div>
+
+    <!-- Two-col: Info + Form -->
+    <div class="contact-layout">
+
+        <!-- LEFT: Contact Info -->
+        <div class="contact-info-side reveal">
+            <h2>Get In Touch</h2>
+            <p>We provide expert Chartered Accountancy services across business registration, taxation, compliance, and NRI services. Reach us through any of the channels below and we'll get back to you promptly.</p>
+
+            <div class="info-rows">
+                <div class="info-row">
+                    <div class="info-row-icon">📞</div>
+                    <div class="info-row-text">
+                        <strong>Phone</strong>
+                        <a href="tel:+919141635572">+91 91416 35572</a>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-icon">📧</div>
+                    <div class="info-row-text">
+                        <strong>Email</strong>
+                        <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-row-icon">📍</div>
+                    <div class="info-row-text">
+                        <strong>Office</strong>
+                        <span>India</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hours-box">
+                <h4>🕐 Business Hours</h4>
+                <p>Monday – Friday: 9:00 AM – 6:00 PM<br>Saturday: 10:00 AM – 2:00 PM<br>Sunday: Closed</p>
+            </div>
+
+            <img class="contact-photo"
+                 src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=85&fit=crop"
+                 alt="Shreyas U M & Associates professional team"
+                 loading="lazy">
+        </div>
+
+        <!-- RIGHT: Contact Form -->
+        <div class="form-side reveal">
+            <h2>Send Us A Message</h2>
+            <p>If you want us to get in touch with you, fill in the form below and we'll respond as soon as possible.</p>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">— Select a service —</option>
+                            <option>Company Registration</option>
+                            <option>Income Tax Filing</option>
+                            <option>GST Registration / Filing</option>
+                            <option>Audit & Compliance</option>
+                            <option>NRI Services</option>
+                            <option>Business Reports / CMA</option>
+                            <option>Funding Solutions</option>
+                            <option>Legal Documentation</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us how we can help you..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message →</button>
+                    <div id="responseMessage"></div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Map / Office Image -->
+    <div class="map-section reveal">
+        <h2>Our Office</h2>
+        <img class="map-img"
+             src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1400&q=80&fit=crop"
+             alt="Shreyas U M & Associates office location India"
+             loading="lazy">
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-content">
+
+<div class="footer-section">
+<h4>Start A Business</h4>
+<ul>
+<li><a href="StartBusiness/private-limited-company.html">Private Limited Company</a></li>
+<li><a href="StartBusiness/limited-liability-partnership.html">LLP Registration</a></li>
+<li><a href="StartBusiness/one-person-company.html">One Person Company</a></li>
+<li><a href="StartBusiness/section-8-company.html">Section 8 Company</a></li>
+<li><a href="StartBusiness/trusts-and-societies.html">Trusts and Societies</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="StartBusiness/start-business-main.html">Start A Business</a></li>
+<li><a href="Compliance/audit-compliance-main.html">Compliance</a></li>
+<li><a href="nri-services.html">NRI Services</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Services</h4>
+<ul>
+<li><a href="Compliance/audit-compliance-main.html">Audit & Assurance</a></li>
+<li><a href="Registrations/income-tax-main.html">Income Tax</a></li>
+<li><a href="Registrations/gst-main.html">GST Services</a></li>
+<li><a href="nri-services.html">NRI Services</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<div class="footer-info">
+<strong>Shreyas U M & Associates</strong><br>
+Chartered Accountants<br><br>
+<strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+<strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+</div>
+</div>
+
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Shreyas U M & Associates | Chartered Accountants | India. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+
+<script>
+    // Sticky header shadow
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Form submission — Google Apps Script
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('.submit-btn');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+
+        const formData = new FormData(this);
+
+        fetch("https://script.google.com/macros/s/AKfycbwNk0jSqTyRbcMKp4Hd1APPap-4YOK8h-Z_RFzACCYqwl381cTJn2wDIYlQD5IZR40-/exec", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.text())
+        .then(() => {
+            document.getElementById("responseMessage").innerHTML =
+                "<div class='success'>✅ Message sent successfully! We'll be in touch shortly.</div>";
+            this.reset();
+            btn.textContent = 'Send Message →';
+            btn.disabled = false;
+        })
+        .catch(() => {
+            document.getElementById("responseMessage").innerHTML =
+                "<div class='error'>❌ Submission failed. Please try again or call us directly.</div>";
+            btn.textContent = 'Send Message →';
+            btn.disabled = false;
+        });
+    });
+</script>
+
+</body>
+</html>

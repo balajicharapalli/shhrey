@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AlumniConnect — Hackathon Ready SPA</title>
+  <meta name="description" content="Single-file frontend for an alumni portal: directory, mentorship, jobs, events, donations, groups, dashboard and chatbot." />
+  <style>
+    /* ----------------- RESET & BASE ----------------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body,#app{height:100%}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.4;color:#0f172a;background:#f8fafc}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ----------------- LAYOUT ----------------- */
+    .container{max-width:1100px;margin:24px auto;padding:16px}
+    header{display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand h1{font-size:20px}
+    nav{margin-left:auto;display:flex;gap:8px}
+    nav button{background:#111827;color:#fff;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+    nav button.ghost{background:transparent;color:#111827;border:1px solid #e6eef6}
+
+    .main{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px}
+    .card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+
+    /* ----------------- LEFT COLUMNS (PAGES) ----------------- */
+    .page{display:none}
+    .page.active{display:block}
+
+    /* ----------------- SEARCH & FILTERS ----------------- */
+    .search-row{display:flex;gap:8px;margin-bottom:12px}
+    .search-row input, .search-row select{flex:1;padding:10px;border-radius:8px;border:1px solid #e6eef6}
+    .alumni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+    .alumni-card{display:flex;gap:12px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#60a5fa,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .alumni-card h4{font-size:14px}
+    .meta{font-size:12px;color:#475569}
+
+    /* ----------------- JOBS & EVENTS ----------------- */
+    .jobs-list,.events-list{display:flex;flex-direction:column;gap:10px}
+    .job-item,.event-item{border-radius:10px;padding:12px;border:1px solid #eef2ff}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .btn.primary{background:#0ea5a5;color:#fff}
+    .btn.ghost{background:transparent;border:1px solid #c7d2fe}
+
+    /* ----------------- SIDEBAR ----------------- */
+    .sidebar .small{font-size:13px;color:#475569}
+    .widget{margin-bottom:14px}
+
+    /* ----------------- MODAL ----------------- */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.45);display:flex;align-items:center;justify-content:center}
+    .modal{background:#fff;border-radius:12px;padding:18px;width:560px;max-width:94%}
+    .modal h3{margin-bottom:8px}
+    .form-row{display:flex;gap:8px;margin-top:8px}
+    .form-row input,.form-row textarea{flex:1;padding:8px;border-radius:8px;border:1px solid #e6eef6}
+
+    /* ----------------- CHATBOT ----------------- */
+    .chatbox{display:flex;flex-direction:column;height:360px}
+    .chat-area{flex:1;overflow:auto;padding:8px;display:flex;flex-direction:column;gap:8px}
+    .bubble{max-width:78%;padding:8px 12px;border-radius:12px}
+    .bubble.user{margin-left:auto;background:#0ea5a5;color:#fff}
+    .bubble.bot{background:#eef2ff;color:#0f172a}
+    .chat-input{display:flex;gap:8px;margin-top:8px}
+
+    /* ----------------- FORUM / GROUPS ----------------- */
+    .posts{display:flex;flex-direction:column;gap:8px}
+    .post{border-radius:10px;padding:10px;border:1px solid #eef2ff}
+
+    /* ----------------- RESPONSIVE ----------------- */
+    @media(max-width:980px){
+      .main{grid-template-columns:1fr}
+      nav{display:none}
+    }
+
+    /* small helpers */
+    .muted{color:#64748b}
+    .pill{display:inline-block;padding:6px 8px;border-radius:999px;border:1px solid #e6eef6;font-size:12px}
+  </style>
+</head>
+<body>
+  <div id="app" class="container">
+    <header>
+      <div class="brand">
+        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">AC</div>
+        <div>
+          <h1>AlumniConnect</h1>
+          <div class="muted" style="font-size:12px">College-level hackathon ready portal</div>
+        </div>
+      </div>
+
+      <nav>
+        <button onclick="show('directory')">Directory</button>
+        <button onclick="show('mentorship')">Mentorship</button>
+        <button onclick="show('jobs')">Jobs</button>
+        <button onclick="show('events')">Events</button>
+        <button onclick="show('groups')">Groups</button>
+        <button onclick="show('dashboard')" class="ghost">Dashboard</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section>
+        <!-- Directory Page -->
+        <div id="directory" class="page card active">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <h2>Alumni Directory</h2>
+            <div class="pill">Total alumni: <span id="totalAlumni">0</span></div>
+          </div>
+
+          <div class="search-row">
+            <input id="searchInput" placeholder="Search by name, company, skill..." oninput="renderDirectory()" />
+            <select id="batchFilter" onchange="renderDirectory()">
+              <option value="all">All batches</option>
+            </select>
+            <select id="deptFilter" onchange="renderDirectory()">
+              <option value="all">All departments</option>
+            </select>
+            <button class="btn primary" onclick="openAddAlumni()">+ Add Alumni</button>
+          </div>
+
+          <div class="alumni-grid" id="alumniGrid"></div>
+        </div>
+
+        <!-- Mentorship Page -->
+        <div id="mentorship" class="page card">
+          <h2>Mentorship & Networking</h2>
+          <p class="muted">Find mentors or mark yourself available.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="mentorSearch" placeholder="Search mentors" oninput="renderMentors()" />
+            <button class="btn ghost" onclick="openMentorForm()">Offer as Mentor</button>
+          </div>
+          <div id="mentorList" style="margin-top:12px"></div>
+        </div>
+
+        <!-- Jobs Page -->
+        <div id="jobs" class="page card">
+          <h2>Jobs & Internships</h2>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="jobSearch" placeholder="Search jobs by title or company" oninput="renderJobs()" />
+            <button class="btn primary" onclick="openPostJob()">Post Job</button>
+          </div>
+          <div class="jobs-list" id="jobsList" style="margin-top:12px"></div>
+        </div>
+
+        <!-- Events Page -->
+        <div id="events" class="page card">
+          <h2>Events & Reunions</h2>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="eventSearch" placeholder="Search events" oninput="renderEvents()" />
+            <button class="btn ghost" onclick="openEventForm()">Create Event</button>
+          </div>
+          <div class="events-list" id="eventsList" style="margin-top:12px"></div>
+        </div>
+
+        <!-- Groups / Forum Page -->
+        <div id="groups" class="page card">
+          <h2>Skill Groups & Forum</h2>
+          <p class="muted">Create and join groups based on skills and interests.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <input id="groupName" placeholder="New group name (e.g., Data Science)" />
+            <button class="btn primary" onclick="createGroup()">Create</button>
+          </div>
+          <div id="groupsList" style="margin-top:12px"></div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page card">
+          <h2>Admin Dashboard</h2>
+          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+            <div style="flex:1;min-width:200px" class="card">
+              <div class="small">Quick stats</div>
+              <div style="display:flex;gap:12px;margin-top:12px">
+                <div>
+                  <div class="muted">Alumni</div>
+                  <div id="statAlumni" style="font-weight:700;font-size:18px">0</div>
+                </div>
+                <div>
+                  <div class="muted">Jobs</div>
+                  <div id="statJobs" style="font-weight:700;font-size:18px">0</div>
+                </div>
+                <div>
+                  <div class="muted">Events</div>
+                  <div id="statEvents" style="font-weight:700;font-size:18px">0</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="flex:1;min-width:200px" class="card">
+              <div class="small">Recent activity</div>
+              <ul id="recentActivity" style="margin-top:8px"></ul>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="card widget">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="small">Welcome back</div>
+              <div style="font-weight:700">Balaji</div>
+            </div>
+            <div class="pill">Role: Organizer</div>
+          </div>
+        </div>
+
+        <div class="card widget">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3 style="font-size:16px">AI Chatbot</h3>
+            <div class="muted" style="font-size:12px">Ask about alumni, events, jobs</div>
+          </div>
+          <div style="margin-top:8px" class="chatbox">
+            <div id="chatArea" class="chat-area"></div>
+            <div class="chat-input">
+              <input id="chatInput" placeholder="Ask: e.g. Suggest mentors for ML" onkeydown="if(event.key==='Enter') sendChat()" />
+              <button class="btn primary" onclick="sendChat()">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card widget">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="small">Donate / Fundraise</div>
+              <div style="font-weight:700">Support scholarships</div>
+            </div>
+            <button class="btn ghost" onclick="openDonate()">Donate</button>
+          </div>
+        </div>
+
+        <div class="card widget">
+          <h4>Quick Actions</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+            <button class="btn" onclick="show('directory')">Browse Directory</button>
+            <button class="btn" onclick="show('jobs')">View Jobs</button>
+            <button class="btn" onclick="show('events')">Upcoming Events</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- MODALS / FORMS (hidden by default) -->
+    <div id="modalRoot"></div>
+
+  </div>
+
+  <script>
+    /* ----------------- MOCK DATA ----------------- */
+    const state = {
+      alumni: [
+        {id:1,name:'Ravi Kumar',batch:2018,dept:'CSE',company:'Google',skills:['ML','Python'],city:'Bengaluru',mentor:true},
+        {id:2,name:'Anjali Sharma',batch:2016,dept:'ECE',company:'Qualcomm',skills:['Embedded','C++'],city:'Hyderabad',mentor:false},
+        {id:3,name:'Suresh Reddy',batch:2019,dept:'IT',company:'Zoho',skills:['Fullstack','Node.js'],city:'Chennai',mentor:true},
+        {id:4,name:'Priya Nair',batch:2015,dept:'CSE',company:'Microsoft',skills:['Cloud','Azure'],city:'Bengaluru',mentor:true},
+      ],
+      jobs: [
+        {id:1,title:'Frontend Intern',company:'StartUpX',location:'Remote',desc:'Work on React UI components'},
+        {id:2,title:'Data Scientist',company:'AnalyticsCo',location:'Bengaluru',desc:'ML models on customer data'},
+      ],
+      events:[
+        {id:1,title:'Alumni Meetup 2025',date:'2025-11-22',desc:'Reunion and networking'},
+        {id:2,title:'Tech Talk: LLMs',date:'2025-10-05',desc:'Guest talk by alumnus on LLMs'},
+      ],
+      groups:[
+        {id:1,name:'Data Science',posts:[{user:'Ravi',text:'Sharing a beginner ML project'}]},
+        {id:2,name:'Entrepreneurship',posts:[]}
+      ],
+      recent:[],
+    }
+
+    /* ----------------- UI HELPERS ----------------- */
+    function show(page){
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+      const el = document.getElementById(page)
+      if(el) el.classList.add('active')
+      window.scrollTo({top:0,behavior:'smooth'})
+    }
+
+    function uid(prefix='id'){return prefix+Math.floor(Math.random()*99999)}
+
+    /* ----------------- DIRECTORY ----------------- */
+    function populateFilters(){
+      const batchSet = new Set();
+      const deptSet = new Set();
+      state.alumni.forEach(a=>{batchSet.add(a.batch);deptSet.add(a.dept)})
+      const batchFilter = document.getElementById('batchFilter'); batchFilter.innerHTML='<option value="all">All batches</option>'
+      [...batchSet].sort().forEach(b=>{batchFilter.innerHTML += `<option value="${b}">${b}</option>`})
+      const deptFilter = document.getElementById('deptFilter'); deptFilter.innerHTML='<option value="all">All departments</option>'
+      [...deptSet].sort().forEach(d=>{deptFilter.innerHTML += `<option value="${d}">${d}</option>`})
+    }
+
+    function renderDirectory(){
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const batch = document.getElementById('batchFilter').value;
+      const dept = document.getElementById('deptFilter').value;
+      const container = document.getElementById('alumniGrid'); container.innerHTML=''
+      const filtered = state.alumni.filter(a=>{
+        if(batch!=='all' && String(a.batch)!==batch) return false
+        if(dept!=='all' && a.dept!==dept) return false
+        if(!q) return true
+        const hay = `${a.name} ${a.company} ${a.skills.join(' ')} ${a.city} ${a.dept}`.toLowerCase()
+        return hay.includes(q)
+      })
+      document.getElementById('totalAlumni').textContent = filtered.length
+      state.alumni.forEach(a=>document.getElementById('statAlumni').textContent = state.alumni.length)
+      filtered.forEach(a=>{
+        const div = document.createElement('div'); div.className='alumni-card card'
+        div.innerHTML = `
+          <div style="display:flex;gap:12px;align-items:center">
+            <div class="avatar">${a.name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div>
+            <div>
+              <h4>${a.name}</h4>
+              <div class="meta">${a.dept} • ${a.batch} • ${a.company}</div>
+              <div style="margin-top:6px"><small class="muted">${a.skills.join(', ')}</small></div>
+            </div>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+            <button class="btn" onclick="viewProfile(${a.id})">View</button>
+            ${a.mentor?`<button class="btn primary" onclick="requestMentor(${a.id})">Request Mentor</button>`:''}
+          </div>
+        `
+        container.appendChild(div)
+      })
+    }
+
+    function openAddAlumni(){
+      const id = uid('al')
+      openModal(`<h3>Add Alumni</h3>
+        <div class=\"form-row\"><input id=\"newName\" placeholder=\"Full name\" /></div>
+        <div class=\"form-row\"><input id=\"newBatch\" placeholder=\"Batch (e.g. 2019)\" /></div>
+        <div class=\"form-row\"><input id=\"newDept\" placeholder=\"Department (CSE)\" /></div>
+        <div class=\"form-row\"><input id=\"newCompany\" placeholder=\"Company\" /></div>
+        <div style=\"display:flex;gap:8px;margin-top:12px;justify-content:flex-end\"> <button class=\"btn ghost\" onclick=\"closeModal()\">Cancel</button> <button class=\"btn primary\" onclick=\"saveAlumni()\">Save</button></div>
+      `)
+    }
+    function saveAlumni(){
+      const name = document.getElementById('newName').value || 'Anonymous'
+      const batch = parseInt(document.getElementById('newBatch').value||2020)
+      const dept = document.getElementById('newDept').value||'CSE'
+      const company = document.getElementById('newCompany').value||'Self'
+      state.alumni.push({id:Date.now(),name,batch,dept,company,skills:[],city:'',mentor:false})
+      pushRecent(`Added alumni ${name}`)
+      closeModal(); populateFilters(); renderDirectory();
+    }
+
+    function viewProfile(id){
+      const a = state.alumni.find(x=>x.id===id)
+      openModal(`<h3>${a.name}</h3><p class=\"muted\">${a.dept} • ${a.batch} • ${a.company}</p><p style=\"margin-top:8px\">Skills: ${a.skills.join(', ') || '—'}</p><div style=\"display:flex;gap:8px;margin-top:12px;justify-content:flex-end\"><button class=\"btn ghost\" onclick=\"closeModal()\">Close</button><button class=\"btn primary\" onclick=\"requestMentor(${a.id})\">Request Mentor</button></div>`)
+    }
+
+    /* ----------------- MENTORS ----------------- */
+    function renderMentors(){
+      const q = document.getElementById('mentorSearch').value.toLowerCase()
+      const container = document.getElementById('mentorList'); container.innerHTML=''
+      const mentors = state.alumni.filter(a=>a.mentor && (a.name.toLowerCase().includes(q) || a.skills.join(' ').toLowerCase().includes(q)))
+      mentors.forEach(m=>{
+        const item = document.createElement('div'); item.className='alumni-card card'
+        item.innerHTML = `<div style=\"display:flex;gap:12px\"><div class=\"avatar\">${m.name.split(' ').map(x=>x[0]).slice(0,2).join('')}</div><div><h4>${m.name}</h4><div class=\"meta\">${m.company} • ${m.city}</div><div style=\"margin-top:6px;\"><small class=\"muted\">${m.skills.join(', ')}</small></div></div></div><div style=\"margin-left:auto\"><button class=\"btn primary\" onclick=\"requestMentor(${m.id})\">Request</button></div>`
+        container.appendChild(item)
+      })
+      if(mentors.length===0) container.innerHTML='<div class="muted">No mentors found — encourage alumni to opt in.</div>'
+    }
+
+    function openMentorForm(){
+      openModal(`<h3>Offer as Mentor</h3><p class=\"muted\">Enter your details to be discoverable by students.</p><div class=\"form-row\"><input id=\"mentorName\" placeholder=\"Your name\" /></div><div class=\"form-row\"><input id=\"mentorSkills\" placeholder=\"Skills (comma separated)\" /></div><div style=\"display:flex;gap:8px;justify-content:flex-end;margin-top:8px\"><button class=\"btn ghost\" onclick=\"closeModal()\">Cancel</button><button class=\"btn primary\" onclick=\"saveMentor()\">Save</button></div>`)
+    }
+
+    function saveMentor(){
+      const name = document.getElementById('mentorName').value || `Mentor ${state.alumni.length+1}`
+      const skills = (document.getElementById('mentorSkills').value||'').split(',').map(s=>s.trim()).filter(Boolean)
+      state.alumni.push({id:Date.now(),name,batch:2022,dept:'CSE',company:'Independent',skills,city:'',mentor:true})
+      pushRecent(`New mentor: ${name}`)
+      closeModal(); populateFilters(); renderDirectory(); renderMentors();
+    }
+
+    function requestMentor(id){
+      const a = state.alumni.find(x=>x.id===id)
+      pushRecent(`Mentorship requested from ${a.name}`)
+      alert(`Request sent to ${a.name} — (mock). In real app this triggers an email/notification.`)
+      closeModal()
+    }
+
+    /* ----------------- JOBS ----------------- */
+    function renderJobs(){
+      const q = document.getElementById('jobSearch').value.toLowerCase()
+      const container = document.getElementById('jobsList'); container.innerHTML=''
+      const filtered = state.jobs.filter(j=>!q || (j.title+j.company+j.desc).toLowerCase().includes(q))
+      filtered.forEach(j=>{
+        const d = document.createElement('div'); d.className='job-item'
+        d.innerHTML = `<div style=\"display:flex;justify-content:space-between;align-items:center\"><div><strong>${j.title}</strong><div class=\"muted\">${j.company} • ${j.location}</div></div><div><button class=\"btn primary\" onclick=\"applyJob(${j.id})\">Apply</button></div></div><p style=\"margin-top:8px\">${j.desc}</p>`
+        container.appendChild(d)
+      })
+      document.getElementById('statJobs').textContent = state.jobs.length
+    }
+
+    function openPostJob(){
+      openModal(`<h3>Post a Job</h3><div class=\"form-row\"><input id=\"jobTitle\" placeholder=\"Title\" /></div><div class=\"form-row\"><input id=\"jobCompany\" placeholder=\"Company\" /></div><div class=\"form-row\"><input id=\"jobLocation\" placeholder=\"Location\" /></div><div class=\"form-row\"><textarea id=\"jobDesc\" placeholder=\"Description\"></textarea></div><div style=\"display:flex;justify-content:flex-end;gap:8px;margin-top:8px\"><button class=\"btn ghost\" onclick=\"closeModal()\">Cancel</button><button class=\"btn primary\" onclick=\"postJob()\">Post</button></div>`)
+    }
+    function postJob(){
+      const title=document.getElementById('jobTitle').value||'Untitled';
+      const company=document.getElementById('jobCompany').value||'Company';
+      const location=document.getElementById('jobLocation').value||'Remote';
+      const desc=document.getElementById('jobDesc').value||'';
+      state.jobs.unshift({id:Date.now(),title,company,location,desc}); pushRecent(`Job posted: ${title}`); closeModal(); renderJobs();
+    }
+
+    function applyJob(id){
+      const j = state.jobs.find(x=>x.id===id)
+      alert(`Applied to ${j.title} at ${j.company} — (mock). In real app students attach resume and notify recruiter.`)
+      pushRecent(`Applied to ${j.title}`)
+    }
+
+    /* ----------------- EVENTS ----------------- */
+    function renderEvents(){
+      const q = document.getElementById('eventSearch').value.toLowerCase()
+      const container = document.getElementById('eventsList'); container.innerHTML=''
+      state.events.filter(e=>!q|| (e.title+e.desc).toLowerCase().includes(q)).forEach(ev=>{
+        const d = document.createElement('div'); d.className='event-item'
+        d.innerHTML = `<div style=\"display:flex;justify-content:space-between\"><div><strong>${ev.title}</strong><div class=\"muted\">${ev.date}</div></div><div><button class=\"btn primary\" onclick=\"rsvp(${ev.id})\">RSVP</button></div></div><p style=\"margin-top:8px\">${ev.desc}</p>`
+        container.appendChild(d)
+      })
+      document.getElementById('statEvents').textContent = state.events.length
+    }
+    function openEventForm(){
+      openModal(`<h3>Create Event</h3><div class=\"form-row\"><input id=\"evTitle\" placeholder=\"Event title\" /></div><div class=\"form-row\"><input id=\"evDate\" placeholder=\"YYYY-MM-DD\" /></div><div class=\"form-row\"><textarea id=\"evDesc\" placeholder=\"Short description\"></textarea></div><div style=\"display:flex;justify-content:flex-end;gap:8px;margin-top:8px\"><button class=\"btn ghost\" onclick=\"closeModal()\">Cancel</button><button class=\"btn primary\" onclick=\"postEvent()\">Create</button></div>`)
+    }
+    function postEvent(){
+      const title=document.getElementById('evTitle').value||'Untitled'; const date=document.getElementById('evDate').value||'2025-12-01'; const desc=document.getElementById('evDesc').value||'';
+      state.events.unshift({id:Date.now(),title,date,desc}); pushRecent(`Event created: ${title}`); closeModal(); renderEvents();
+    }
+    function rsvp(id){
+      const ev = state.events.find(x=>x.id===id)
+      alert(`RSVP confirmed for ${ev.title} — (mock). In production, we would save RSVP and send calendar invite.`)
+      pushRecent(`RSVP: ${ev.title}`)
+    }
+
+    /* ----------------- GROUPS ----------------- */
+    function createGroup(){
+      const name = document.getElementById('groupName').value || 'Untitled'
+      state.groups.push({id:Date.now(),name,posts:[]}); pushRecent(`Group created: ${name}`); renderGroups();
+    }
+    function renderGroups(){
+      const list = document.getElementById('groupsList'); list.innerHTML=''
+      state.groups.forEach(g=>{
+        const div = document.createElement('div'); div.className='card'
+        div.innerHTML = `<div style=\"display:flex;justify-content:space-between;align-items:center\"><strong>${g.name}</strong><button class=\"btn ghost\" onclick=\"openGroup(${g.id})\">Open</button></div><div style=\"margin-top:8px\"><small class=\"muted\">Posts: ${g.posts.length}</small></div>`
+        list.appendChild(div)
+      })
+    }
+    function openGroup(id){
+      const g = state.groups.find(x=>x.id===id)
+      openModal(`<h3>${g.name}</h3><div id=\"groupPosts\">${g.posts.map(p=>`<div class=\\"post\\"> <strong>${p.user}</strong><p>${p.text}</p></div>`).join('')}</div><div style=\"display:flex;gap:8px;margin-top:8px\"><input id=\"newPost\" placeholder=\"Write something...\" /><button class=\"btn primary\" onclick=\"addPost(${g.id})\">Post</button></div><div style=\"display:flex;justify-content:flex-end;margin-top:8px\"><button class=\"btn ghost\" onclick=\"closeModal()\">Close</button></div>`)
+    }
+    function addPost(gid){
+      const txt = document.getElementById('newPost').value || '...' ;
+      const g = state.groups.find(x=>x.id===gid); g.posts.unshift({user:'You',text:txt}); pushRecent(`Posted in ${g.name}`)
+      closeModal(); openGroup(gid)
+    }
+
+    /* ----------------- CHATBOT (mock RAG behavior) ----------------- */
+    function sendChat(){
+      const q = document.getElementById('chatInput').value.trim()
+      if(!q) return; appendChat('user',q); document.getElementById('chatInput').value=''
+      // Very simple local 'RAG' — searches local data and replies
+      setTimeout(()=>{
+        const answer = generateChatbotResponse(q)
+        appendChat('bot',answer)
+      },400)
+    }
+    function appendChat(who,text){
+      const area = document.getElementById('chatArea'); const b = document.createElement('div'); b.className='bubble '+(who==='user'?'user':'bot'); b.innerText=text; area.appendChild(b); area.scrollTop = area.scrollHeight
+    }
+    function generateChatbotResponse(q){
+      q = q.toLowerCase()
+      if(q.includes('mentor')){
+        const mentors = state.alumni.filter(a=>a.mentor).slice(0,3).map(a=>`${a.name} (${a.company})`).join('\n')
+        return mentors ? `Top mentors:\n${mentors}` : 'No mentors available right now.'
+      }
+      if(q.includes('jobs')){
+        return state.jobs.map(j=>`${j.title} @ ${j.company}`).slice(0,5).join('\n')
+      }
+      if(q.includes('events')){
+        return state.events.map(e=>`${e.title} — ${e.date}`).slice(0,5).join('\n')
+      }
+      if(q.includes('near')||q.includes('city')){
+        return state.alumni.slice(0,5).map(a=>`${a.name} — ${a.city || '—'}`).join('\n')
+      }
+      // fallback: simple FAQ style
+      const faq = {
+        'how to become a mentor':'Go to Mentorship → Offer as Mentor and fill the form.',
+        'how to post a job':'Go to Jobs → Post Job. Recruiters and alumni can post opportunities.'
+      }
+      for(const k in faq) if(q.includes(k)) return faq[k]
+      return 'I can help with mentors, jobs, events, or alumni search. Try: "Suggest mentors for ML" or "Show jobs"'
+    }
+
+    /* ----------------- DONATION ----------------- */
+    function openDonate(){
+      openModal(`<h3>Donate to Scholarships</h3><p class=\"muted\">This is a demo. Integrate Stripe/PayPal in production.</p><div class=\"form-row\"><input id=\"donorName\" placeholder=\"Name\" /></div><div class=\"form-row\"><input id=\"donorAmount\" placeholder=\"Amount (INR)\" /></div><div style=\"display:flex;justify-content:flex-end;gap:8px;margin-top:8px\"><button class=\"btn ghost\" onclick=\"closeModal()\">Cancel</button><button class=\"btn primary\" onclick=\"donate()\">Donate</button></div>`)
+    }
+    function donate(){
+      const name=document.getElementById('donorName').value||'Anonymous'; const amt=document.getElementById('donorAmount').value||'100'
+      pushRecent(`Donation: ${name} donated ₹${amt}`); alert('Thanks for donating! (mock)'); closeModal()
+    }
+
+    /* ----------------- MODAL BASE ----------------- */
+    function openModal(html){
+      const root = document.getElementById('modalRoot'); root.innerHTML = `<div class=\"modal-backdrop\"> <div class=\"modal\">${html}</div></div>`
+    }
+    function closeModal(){ document.getElementById('modalRoot').innerHTML = '' }
+
+    /* ----------------- RECENT ACTIVITY ----------------- */
+    function pushRecent(text){ state.recent.unshift({t:new Date().toLocaleString(),text}); renderRecent(); }
+    function renderRecent(){
+      const ul = document.getElementById('recentActivity'); ul.innerHTML=''
+      state.recent.slice(0,8).forEach(r=>{ const li = document.createElement('li'); li.innerText = `${r.text} — ${r.t}`; ul.appendChild(li) })
+    }
+
+    /* ----------------- INIT ----------------- */
+    function init(){
+      populateFilters(); renderDirectory(); renderMentors(); renderJobs(); renderEvents(); renderGroups(); renderRecent();
+      // small welcome in chatbot
+      appendChat('bot','Hello! I am AlumniGenie — ask about mentors, jobs, and events.')
+    }
+
+    init()
+  </script>
+</body>
+</html>

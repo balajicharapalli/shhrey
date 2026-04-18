@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proprietary Concern - Start A Business - Shreyas U M & Associates</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background-color:#f5f7fa;color:#333;font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all .3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:auto;padding:8px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;align-items:center;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0d2c54}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav ul li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav ul li a:hover,nav ul li a.active{color:#0066cc;border-bottom-color:#0066cc;background:rgba(0,102,204,.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── HERO ── */
+.hero{
+    position:relative;color:#fff;
+    padding:110px 20px 90px;text-align:center;overflow:hidden;
+    background:linear-gradient(rgba(13,44,84,0.88),rgba(13,44,84,0.93)),
+               url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.06) 0%,transparent 65%);
+    pointer-events:none;
+}
+.hero h2{
+    font-family:'Playfair Display',serif;
+    font-size:52px;margin-bottom:18px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.hero p{
+    font-size:18px;max-width:680px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:auto;padding:60px 20px}
+
+/* ── HERO IMAGE ── */
+.content-hero-img{
+    width:100%;height:400px;object-fit:cover;
+    border-radius:14px;margin-bottom:52px;display:block;
+    box-shadow:0 10px 36px rgba(0,0,0,.13);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.content-hero-img:hover{transform:scale(1.012);box-shadow:0 18px 50px rgba(0,0,0,.18)}
+
+/* ── SECTION HEADINGS ── */
+.section-title{
+    font-family:'Playfair Display',serif;
+    color:#0d2c54;margin-bottom:22px;font-size:30px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;display:block;
+}
+.content-block{margin-bottom:52px}
+.content-block p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-bottom:52px;align-items:center}
+.two-col-img{
+    width:100%;height:320px;object-fit:cover;border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.11);display:block;
+    transition:transform .5s ease,box-shadow .5s ease;
+}
+.two-col-img:hover{transform:scale(1.03);box-shadow:0 14px 40px rgba(0,0,0,.17)}
+
+/* ── FEATURE LIST ── */
+.feature-list{list-style:none;margin:0;padding:0}
+.feature-list li{
+    padding:11px 0 11px 30px;position:relative;
+    color:#555;font-size:14px;line-height:1.75;
+    border-bottom:1px solid #eef2f7;
+}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{
+    content:'✓';position:absolute;left:0;top:11px;
+    color:#0066cc;font-weight:700;font-size:14px;
+}
+
+/* ── COMPARE GRID ── */
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:28px}
+.compare-card{
+    background:#fff;border:1px solid #e0eaf4;border-radius:14px;
+    padding:26px 22px;box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+}
+.compare-card:hover{transform:translateY(-6px);box-shadow:0 14px 32px rgba(13,44,84,.14);border-color:#0d2c54}
+.compare-card h4{
+    color:#0d2c54;font-size:15px;margin-bottom:14px;font-weight:700;
+    border-bottom:2px solid #e8f0f7;padding-bottom:10px;
+}
+.compare-card ul{list-style:none;margin:0;padding:0}
+.compare-card ul li{
+    font-size:13px;color:#555;
+    padding:6px 0 6px 18px;position:relative;
+    border-bottom:1px solid #f5f7fa;
+}
+.compare-card ul li:last-child{border-bottom:none}
+.compare-card ul li::before{content:'•';position:absolute;left:0;color:#0066cc;font-weight:700}
+
+/* ── IMG BAND ── */
+.img-band{
+    width:100%;height:300px;object-fit:cover;
+    border-radius:14px;margin:0 0 52px;display:block;
+    box-shadow:0 8px 28px rgba(0,0,0,.12);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.img-band:hover{transform:scale(1.012);box-shadow:0 16px 44px rgba(0,0,0,.17)}
+
+/* ── PROCESS STEPS ── */
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:28px}
+.step{
+    background:#fff;padding:26px 22px;
+    border-left:4px solid #0d2c54;border-radius:0 12px 12px 0;
+    box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s;
+}
+.step:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(13,44,84,.14);border-color:#0066cc}
+.step-num{
+    width:38px;height:38px;background:linear-gradient(135deg,#0d2c54,#1a4a7a);
+    color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:16px;font-weight:700;margin-bottom:12px;
+    box-shadow:0 4px 12px rgba(13,44,84,.28);
+}
+.step h4{font-size:14px;font-weight:700;color:#0d2c54;margin-bottom:6px}
+.step p{font-size:12.5px;color:#666;margin:0;line-height:1.6}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto;margin-top:24px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+table{width:100%;border-collapse:collapse;min-width:500px}
+table th{background:linear-gradient(135deg,#0d2c54,#1a4a7a);color:#fff;padding:14px 18px;text-align:left;font-size:13.5px;font-weight:600}
+table td{padding:13px 18px;border-bottom:1px solid #e8eef4;font-size:13px;color:#555}
+table tr:last-child td{border-bottom:none}
+table tr:nth-child(even) td{background:#f8faff}
+table tr:hover td{background:#eef4ff;transition:background .2s}
+table td strong{color:#0d2c54}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+    background:linear-gradient(135deg,#e8f0f7,#f0f6ff);
+    border-left:4px solid #0066cc;padding:24px;
+    border-radius:0 12px 12px 0;margin:0 0 52px;
+    transition:box-shadow .3s;
+}
+.highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+.highlight-box h4{color:#0066cc;font-size:16px;margin-bottom:10px;font-weight:700;font-family:'Playfair Display',serif}
+.highlight-box p{color:#555;font-size:14px;line-height:1.75;margin:0 0 8px}
+.highlight-box ul{list-style:none;padding:0;margin:0}
+.highlight-box ul li{
+    color:#555;font-size:14px;line-height:1.75;
+    padding:5px 0 5px 22px;position:relative;
+}
+.highlight-box ul li::before{content:'•';position:absolute;left:0;color:#0066cc;font-weight:700}
+
+/* ── TWO-COL DOCS ── */
+.docs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-bottom:52px}
+.docs-block{background:#fff;border-radius:14px;padding:28px 24px;box-shadow:0 4px 16px rgba(0,0,0,.07);border:1px solid #e0eaf4}
+.docs-block h5{font-size:15px;font-weight:700;color:#0d2c54;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e8f0f7}
+.docs-block ul{list-style:none;padding:0;margin:0}
+.docs-block li{
+    padding:9px 0 9px 26px;position:relative;
+    font-size:13.5px;color:#555;line-height:1.65;
+    border-bottom:1px solid #f0f4f8;
+}
+.docs-block li:last-child{border-bottom:none}
+.docs-block li::before{content:'📄';position:absolute;left:0;top:9px;font-size:12px}
+
+/* ── CTA ── */
+.cta{
+    position:relative;text-align:center;padding:75px 20px;
+    border-radius:18px;margin:0 0 50px;overflow:hidden;color:#fff;
+    background:linear-gradient(rgba(13,44,84,0.92),rgba(13,44,84,0.96)),
+               url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&fit=crop') center/cover no-repeat;
+}
+.cta::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,0.07) 0%,transparent 60%);
+    pointer-events:none;
+}
+.cta h3{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;margin-bottom:14px}
+.cta p{font-size:16px;opacity:.88;font-weight:300;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto}
+.cta-btn{
+    display:inline-block;padding:14px 38px;
+    background:#f4b400;color:#1a2332;
+    font-size:15px;font-weight:700;border-radius:6px;
+    transition:all .3s ease;box-shadow:0 4px 16px rgba(244,180,0,.35);
+    font-family:'DM Sans',sans-serif;
+}
+.cta-btn:hover{background:#e09e00;transform:translateY(-3px);box-shadow:0 8px 24px rgba(244,180,0,.45);color:#1a2332}
+
+/* ── NAV BUTTONS ── */
+.nav-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:10px 0 50px}
+.btn-back{
+    padding:13px 30px;border-radius:6px;font-weight:600;font-size:14px;
+    border:2px solid #0d2c54;color:#0d2c54;
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.btn-back:hover{background:#0d2c54;color:#fff;transform:translateY(-2px)}
+.btn-contact{
+    padding:13px 30px;border-radius:6px;font-weight:700;font-size:14px;
+    background:linear-gradient(135deg,#0d2c54,#1a4a7a);color:#fff;
+    box-shadow:0 4px 14px rgba(13,44,84,.3);
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.btn-contact:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(13,44,84,.4)}
+
+/* ── WHATSAPP ── */
+.whatsapp-btn{
+    position:fixed;bottom:24px;right:24px;
+    background:#25D366;color:#fff;
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;box-shadow:0 4px 16px rgba(37,211,102,.5);
+    z-index:1000;transition:transform .3s ease,box-shadow .3s ease;
+}
+.whatsapp-btn:hover{transform:scale(1.12);box-shadow:0 8px 24px rgba(37,211,102,.6)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:#fff}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:#fff}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+    .hero h2{font-size:32px}
+    .two-col,.docs-two-col{grid-template-columns:1fr}
+    .content-hero-img,.img-band{height:220px}
+    nav ul{flex-direction:column;gap:0}
+    nav ul li a{padding:12px 14px}
+    .cta h3{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+<div class="header-top-inner">
+<div class="header-top-left">
+<a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+<span>Call +91 91416 35572</span>
+</div>
+<div class="header-top-right">
+<a href="../index.html">Back to Home</a>
+<a href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+<div class="header-inner">
+<a href="../index.html" class="logo">Shreyas U M & Associates</a>
+<nav>
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li><a href="start-business-main.html" class="active">Start A Business</a></li>
+<li><a href="../Registrations/income-tax-main.html">Registrations</a></li>
+<li><a href="../nri-services.html">NRI Services</a></li>
+<li><a href="../Compliance/audit-compliance-main.html">Compliance</a></li>
+<li><a href="../contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+<div class="breadcrumb-inner">
+<a href="../index.html">Home</a> &rsaquo;
+<a href="start-business-main.html">Start A Business</a> &rsaquo;
+<span>Proprietary Concern</span>
+</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Proprietary Concern</h2>
+    <p>The simplest and most accessible form of business — owned and run entirely by one individual with complete control and minimal formalities.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+<!-- Hero image -->
+<img class="content-hero-img reveal"
+     src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&q=85&fit=crop"
+     alt="Small business owner — Proprietary Concern India"
+     loading="lazy">
+
+<!-- What is a Proprietary Concern — two col -->
+<div class="two-col reveal">
+<div class="content-block" style="margin-bottom:0">
+    <span class="section-title">What is a Proprietary Concern?</span>
+    <p>A <strong>Proprietary Concern</strong> (also called a Sole Proprietorship) is the oldest and simplest form of business in India. It is owned, managed, and controlled entirely by a <strong>single individual</strong> — the proprietor — who is personally responsible for all business decisions, profits, and liabilities.</p>
+    <p>Unlike a company or LLP, a proprietary concern has <strong>no separate legal identity</strong>. The owner and the business are considered the same person in the eyes of the law. This means the proprietor is entitled to all profits but also bears unlimited personal liability for any debts or losses.</p>
+    <p>It is the most common structure for <strong>small shops, freelancers, home businesses, local traders, and self-employed professionals</strong> across India.</p>
+</div>
+<img class="two-col-img"
+     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80&fit=crop"
+     alt="Small business proprietor at work"
+     loading="lazy">
+</div>
+
+<!-- Key Features -->
+<div class="content-block reveal">
+    <span class="section-title">Key Features</span>
+    <ul class="feature-list">
+        <li>Owned and managed entirely by a single individual</li>
+        <li>No separate legal entity — owner and business are legally the same</li>
+        <li>Unlimited personal liability for all business debts and obligations</li>
+        <li>Minimal regulatory formalities — no MCA registration required</li>
+        <li>All profits belong solely to the proprietor</li>
+        <li>Business income is taxed as the owner's personal income (individual slab rates)</li>
+        <li>Can be started almost immediately with very low cost</li>
+        <li>No mandatory audit unless turnover exceeds prescribed limits</li>
+    </ul>
+</div>
+
+<!-- How It Compares -->
+<div class="content-block reveal">
+    <span class="section-title">How It Compares to Other Structures</span>
+    <div class="compare-grid">
+        <div class="compare-card">
+            <h4>🏪 Proprietary Concern</h4>
+            <ul>
+                <li>Single owner</li>
+                <li>No registration needed</li>
+                <li>Unlimited liability</li>
+                <li>No separate legal entity</li>
+                <li>Least compliance</li>
+                <li>Individual tax rates</li>
+                <li>Cannot raise equity</li>
+            </ul>
+        </div>
+        <div class="compare-card">
+            <h4>👤 One Person Company</h4>
+            <ul>
+                <li>Single owner</li>
+                <li>MCA registration required</li>
+                <li>Limited liability</li>
+                <li>Separate legal entity</li>
+                <li>Moderate compliance</li>
+                <li>Corporate tax rates</li>
+                <li>More credibility</li>
+            </ul>
+        </div>
+        <div class="compare-card">
+            <h4>👥 Partnership Firm</h4>
+            <ul>
+                <li>2 or more owners</li>
+                <li>Optional registration</li>
+                <li>Unlimited liability</li>
+                <li>No separate legal entity</li>
+                <li>Low compliance</li>
+                <li>Individual tax rates</li>
+                <li>Shared capital</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Benefits — two col -->
+<div class="two-col reveal">
+<img class="two-col-img"
+     src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=700&q=80&fit=crop"
+     alt="Proprietary concern benefits India"
+     loading="lazy">
+<div class="content-block" style="margin-bottom:0">
+    <span class="section-title">Benefits of a Proprietary Concern</span>
+    <ul class="feature-list">
+        <li>Complete autonomy — every business decision rests with you</li>
+        <li>Lowest cost of formation — practically zero registration fees</li>
+        <li>No profit sharing — every rupee earned stays with the owner</li>
+        <li>Quickest way to legally start a business in India</li>
+        <li>Simple bookkeeping and minimal compliance burden</li>
+        <li>Easy to close or change business nature without legal formalities</li>
+        <li>Suitable for testing a business idea before scaling up</li>
+        <li>Bank accounts and licences can be obtained in the proprietor's name</li>
+    </ul>
+</div>
+</div>
+
+<!-- Best Suited For -->
+<div class="highlight-box reveal">
+    <h4>Best Suited For</h4>
+    <p>Local retailers, freelancers, consultants, home-based businesses, artisans, small service providers, and anyone starting a business solo with a limited budget and low risk exposure.</p>
+</div>
+
+<!-- Documents & Registrations -->
+<div class="content-block reveal">
+    <span class="section-title">Required Registrations &amp; Documents</span>
+    <p style="color:#555;font-size:14px;line-height:1.85;margin-bottom:20px">A Proprietary Concern has no single mandatory registration, but the following are typically required to operate legally and open a business bank account:</p>
+    <div class="docs-two-col">
+        <div class="docs-block">
+            <h5>For the Proprietor</h5>
+            <ul>
+                <li>PAN Card (mandatory for income tax filing)</li>
+                <li>Aadhaar Card (identity and address proof)</li>
+                <li>Passport-size photograph</li>
+            </ul>
+        </div>
+        <div class="docs-block">
+            <h5>Registrations to Consider</h5>
+            <ul>
+                <li><strong>GST Registration</strong> — Mandatory if turnover exceeds ₹20 lakhs</li>
+                <li><strong>Udyam Registration (MSME)</strong> — For MSME benefits and easier loans</li>
+                <li><strong>Shops &amp; Establishments</strong> — Required by most states for commercial premises</li>
+                <li><strong>Trade Licence</strong> — Issued by local municipal body</li>
+                <li><strong>Professional Tax</strong> — May be required in certain states</li>
+                <li><strong>FSSAI Licence</strong> — Mandatory for any food-related business</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- How to Start -->
+<div class="content-block reveal">
+    <span class="section-title">How to Start a Proprietary Concern</span>
+    <div class="process-steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h4>Choose a Business Name</h4>
+            <p>Pick a unique trade name. You can operate under your own name or a chosen business name.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h4>Obtain PAN &amp; Aadhaar</h4>
+            <p>Ensure your personal PAN is active — this will be used for all business filings.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h4>GST Registration</h4>
+            <p>Register for GST if applicable — this gives your business a GSTIN and legal standing.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <h4>Udyam / MSME</h4>
+            <p>Register on the Udyam portal to access MSME benefits, priority lending, and government schemes.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">5</div>
+            <h4>Trade Licence / Shop Act</h4>
+            <p>Obtain local municipal trade licence and Shops &amp; Establishments registration if applicable.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">6</div>
+            <h4>Open a Bank Account</h4>
+            <p>Open a current account in the business name using your PAN, Aadhaar, GST certificate, and trade licence.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Important Considerations -->
+<div class="highlight-box reveal">
+    <h4>Important Considerations</h4>
+    <ul>
+        <li>The proprietor is personally liable for all debts — creditors can attach personal assets</li>
+        <li>Business dies with the owner — no perpetual succession unlike a company</li>
+        <li>Difficult to raise external investment or equity funding</li>
+        <li>Limited to individual income tax slabs — no corporate tax benefits</li>
+        <li>Cannot transfer ownership by selling shares — only the assets can be sold</li>
+        <li>Consider upgrading to OPC or LLP as the business grows to get liability protection</li>
+    </ul>
+</div>
+
+<!-- Timeline & Cost -->
+<div class="content-block reveal">
+    <span class="section-title">Estimated Timeline &amp; Cost</span>
+    <div class="table-wrap">
+        <table>
+            <tr><th>Activity</th><th>Timeline</th><th>Approx. Cost</th></tr>
+            <tr><td>GST Registration</td><td>3–7 days</td><td>Free (Govt.) + CA fees</td></tr>
+            <tr><td>Udyam / MSME Registration</td><td>Same day</td><td>Free</td></tr>
+            <tr><td>Shops &amp; Establishments Registration</td><td>3–10 days</td><td>₹500 – ₹2,000</td></tr>
+            <tr><td>Trade Licence</td><td>7–15 days</td><td>₹500 – ₹3,000</td></tr>
+            <tr><td>Bank Account Opening</td><td>2–3 days</td><td>Minimal</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>1–3 weeks</strong></td><td><strong>₹1,000 – ₹5,000</strong></td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- Ongoing Compliance — two col -->
+<div class="two-col reveal">
+<div class="content-block" style="margin-bottom:0">
+    <span class="section-title">Ongoing Compliance</span>
+    <ul class="feature-list">
+        <li><strong>Income Tax Return (ITR-3 / ITR-4)</strong> — Annual filing as an individual; business income included</li>
+        <li><strong>Tax Audit</strong> — Required if turnover exceeds ₹1 crore (business) or ₹50 lakhs (profession)</li>
+        <li><strong>GST Returns</strong> — Monthly/quarterly GSTR-1 and GSTR-3B if GST registered</li>
+        <li><strong>TDS</strong> — Deduct and deposit TDS if applicable on payments made</li>
+        <li><strong>Books of Accounts</strong> — Maintain proper records for income tax and GST purposes</li>
+        <li><strong>Renewal of Licences</strong> — Trade licence and Shops Act registration renewed annually</li>
+    </ul>
+</div>
+<img class="two-col-img"
+     src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700&q=80&fit=crop"
+     alt="Proprietary concern compliance and tax filing"
+     loading="lazy">
+</div>
+
+<!-- Bottom image band -->
+<img class="img-band reveal"
+     src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1400&q=80&fit=crop"
+     alt="Small business operations and compliance"
+     loading="lazy">
+
+<!-- CTA -->
+<div class="cta reveal">
+    <h3>Ready to Start Your Proprietary Business?</h3>
+    <p>Our CA team helps you with GST registration, Udyam registration, trade licences, and all ongoing compliance — so you can focus on running your business.</p>
+    <a href="../contact.html" class="cta-btn">Chat with CA</a>
+</div>
+
+<!-- Nav buttons -->
+<div class="nav-buttons reveal">
+    <a href="start-business-main.html" class="btn-back">← Back to Start A Business</a>
+    <a href="../contact.html" class="btn-contact">Contact For Guidance →</a>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-content">
+
+<div class="footer-section">
+<h4>Start A Business</h4>
+<ul>
+<li><a href="association-of-persons.html">Association of Persons</a></li>
+<li><a href="branch-liaison-office.html">Branch / Liaison Office</a></li>
+<li><a href="limited-liability-partnership.html">LLP Registration</a></li>
+<li><a href="one-person-company.html">One Person Company</a></li>
+<li><a href="partnership-firms.html">Partnership Firms</a></li>
+<li><a href="private-limited-company.html">Private Limited Company</a></li>
+<li><a href="proprietary-concern.html">Proprietary Concern</a></li>
+<li><a href="section-8-company.html">Section 8 Company</a></li>
+<li><a href="subsidiary-company.html">Subsidiary Company</a></li>
+<li><a href="trusts-and-societies.html">Trusts and Societies</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li><a href="start-business-main.html">Start A Business</a></li>
+<li><a href="../Reports/reports-main.html">Reports</a></li>
+<li><a href="../Compliance/audit-compliance-main.html">Compliance</a></li>
+<li><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Services</h4>
+<ul>
+<li><a href="../Compliance/audit-compliance-main.html">Audit &amp; Assurance</a></li>
+<li><a href="../Registrations/income-tax-main.html">Income Tax</a></li>
+<li><a href="../Registrations/gst-main.html">GST Services</a></li>
+<li><a href="../nri-services.html">NRI Services</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<div class="footer-info">
+<strong>Shreyas U M & Associates</strong><br>
+Chartered Accountants<br><br>
+<strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+<strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+</div>
+</div>
+
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Shreyas U M & Associates | Chartered Accountants | India. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/919141635572?text=Hi%20I%20need%20CA%20services" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
+
+<script>
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
