@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Audit & Compliance Services - Shreyas U M & Associates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background-color:#f5f7fa;color:#333;font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all .3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0d2c54}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav ul li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav ul li a:hover,nav ul li a.active{color:#0066cc;border-bottom-color:#0066cc;background:rgba(0,102,204,.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── HERO ── */
+.hero{
+    position:relative;color:#fff;
+    padding:110px 20px 90px;text-align:center;overflow:hidden;
+    background:linear-gradient(rgba(13,44,84,0.88),rgba(13,44,84,0.93)),
+               url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.06) 0%,transparent 65%);
+    pointer-events:none;
+}
+.hero h2{
+    font-family:'Playfair Display',serif;
+    font-size:52px;margin-bottom:18px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.hero p{
+    font-size:18px;max-width:680px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:auto;padding:60px 20px}
+
+/* ── HERO IMAGE ── */
+.content-hero-img{
+    width:100%;height:370px;object-fit:cover;
+    border-radius:14px;margin-bottom:52px;display:block;
+    box-shadow:0 10px 36px rgba(0,0,0,.13);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.content-hero-img:hover{transform:scale(1.012);box-shadow:0 18px 50px rgba(0,0,0,.18)}
+
+/* ── SECTION HEADINGS ── */
+.section-title{
+    font-family:'Playfair Display',serif;
+    color:#0d2c54;margin-bottom:22px;font-size:30px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;display:block;
+}
+.content-block{margin-bottom:52px}
+.content-block p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-bottom:52px;align-items:center}
+.two-col-img{
+    width:100%;height:290px;object-fit:cover;border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.11);display:block;
+    transition:transform .5s ease,box-shadow .5s ease;
+}
+.two-col-img:hover{transform:scale(1.03);box-shadow:0 14px 40px rgba(0,0,0,.17)}
+
+/* ── SERVICE CARDS GRID ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:28px}
+.service-card{
+    background:#fff;border:1px solid #e0eaf4;border-radius:14px;
+    overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+    display:block;text-decoration:none;
+}
+.service-card:hover{transform:translateY(-7px);box-shadow:0 14px 36px rgba(13,44,84,.16);border-color:#0d2c54}
+.service-card-img{width:100%;height:150px;object-fit:cover;display:block;transition:transform .5s ease}
+.service-card:hover .service-card-img{transform:scale(1.06)}
+.service-card-body{padding:22px 20px}
+.service-card-body h4{color:#0d2c54;margin-bottom:10px;font-size:16px;font-weight:700}
+.service-card-body p{color:#666;font-size:13.5px;line-height:1.65;margin-bottom:14px}
+.service-card-link{
+    display:inline-block;color:#0066cc;font-size:13px;font-weight:600;
+    border-bottom:1px solid transparent;transition:border-color .3s;
+}
+.service-card:hover .service-card-link{border-bottom-color:#0066cc}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+    background:linear-gradient(135deg,#e8f0f7,#f0f6ff);
+    border-left:4px solid #0066cc;padding:24px;
+    border-radius:0 12px 12px 0;margin:22px 0;
+    transition:box-shadow .3s;
+}
+.highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+.highlight-box h4{color:#0066cc;font-size:16px;margin-bottom:10px;font-weight:700}
+.highlight-box p{color:#555;font-size:14px;line-height:1.75}
+
+/* ── WHY LIST ── */
+.why-list{list-style:none;margin:0;padding:0}
+.why-list li{
+    padding:12px 0 12px 32px;position:relative;
+    color:#555;font-size:14px;line-height:1.75;
+    border-bottom:1px solid #eef2f7;
+}
+.why-list li:last-child{border-bottom:none}
+.why-list li::before{
+    content:'✓';position:absolute;left:0;top:12px;
+    color:#0066cc;font-weight:700;font-size:15px;
+}
+
+/* ── CTA ── */
+.cta{
+    position:relative;text-align:center;padding:75px 20px;
+    border-radius:18px;margin:10px 0 50px;overflow:hidden;color:#fff;
+    background:linear-gradient(rgba(13,44,84,0.92),rgba(13,44,84,0.96)),
+               url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&fit=crop') center/cover no-repeat;
+}
+.cta::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,0.07) 0%,transparent 60%);
+    pointer-events:none;
+}
+.cta h3{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;margin-bottom:14px;}
+.cta p{font-size:16px;opacity:.88;font-weight:300;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto}
+.cta-btn{
+    display:inline-block;margin-top:4px;padding:14px 38px;
+    background:#f4b400;color:#1a2332;
+    font-size:15px;font-weight:700;cursor:pointer;
+    border-radius:6px;transition:all .3s ease;
+    box-shadow:0 4px 16px rgba(244,180,0,.35);
+    font-family:'DM Sans',sans-serif;
+}
+.cta-btn:hover{background:#e09e00;transform:translateY(-3px);box-shadow:0 8px 24px rgba(244,180,0,.45);color:#1a2332}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:#fff}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:#fff}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+    .hero h2{font-size:32px}
+    .two-col{grid-template-columns:1fr}
+    .content-hero-img{height:220px}
+    nav ul{flex-direction:column;gap:0}
+    nav ul li a{padding:12px 14px}
+    .cta h3{font-size:26px}
+}
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     FILE LOCATION: Compliance/audit-compliance-main.html
+     Root links use ../   |   Same-folder: no prefix
+     Other subfolders: ../FolderName/file.html
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- HEADER TOP -->
+<div class="header-top">
+    <div class="header-top-inner">
+        <div class="header-top-left">
+            <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+            <span>Call +91 91416 35572</span>
+        </div>
+        <div class="header-top-right">
+            <a href="../index.html">Back to Home</a>
+            <a href="../contact.html">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a href="../index.html" class="logo">Shreyas U M & Associates</a>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../start-a-business/start-business-main.html">Start A Business</a></li>
+                <li><a href="../Registrations/income-tax-main.html">Tax Services</a></li>
+                <li><a href="../nri-services.html">NRI Services</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="../index.html">Home</a> &rsaquo; <span>Audit & Compliance</span>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Audit & Compliance</h2>
+    <p>Professional audit, assurance and regulatory compliance services to keep your business accurate, transparent and fully protected.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Hero Image -->
+    <img class="content-hero-img reveal"
+         src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=85&fit=crop"
+         alt="Audit and Compliance - Chartered Accountants"
+         loading="lazy">
+
+    <!-- Intro — two col -->
+    <div class="two-col reveal">
+        <div class="content-block" style="margin-bottom:0">
+            <span class="section-title">Our Audit & Compliance Expertise</span>
+            <p>At Shreyas U M & Associates, we deliver rigorous audit and compliance services that go beyond box-ticking. Our approach is thorough, independent, and designed to add genuine value to your business.</p>
+            <p>From statutory audits and internal audits to GST compliance, company law filings, and FDI advisory — we cover every regulatory obligation your business faces, so you can focus on growth.</p>
+        </div>
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=85&fit=crop"
+             alt="CA team conducting audit review"
+             loading="lazy">
+    </div>
+
+    <!-- Services Grid — each card links to its own page in same folder -->
+    <div class="content-block reveal">
+        <span class="section-title">Our Compliance Services</span>
+        <div class="services-grid">
+
+            <a class="service-card" href="audits.html">
+                <img class="service-card-img"
+                     src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&fit=crop"
+                     alt="Audit Services" loading="lazy">
+                <div class="service-card-body">
+                    <h4>Audits</h4>
+                    <p>Statutory, internal, tax and concurrent audits conducted with precision and independence.</p>
+                    <span class="service-card-link">Learn More →</span>
+                </div>
+            </a>
+
+            <a class="service-card" href="income-tax.html">
+                <img class="service-card-img"
+                     src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80&fit=crop"
+                     alt="Income Tax Compliance" loading="lazy">
+                <div class="service-card-body">
+                    <h4>Income Tax</h4>
+                    <p>Tax audit, assessment handling, notice responses and full income tax compliance support.</p>
+                    <span class="service-card-link">Learn More →</span>
+                </div>
+            </a>
+
+            <a class="service-card" href="gst.html">
+                <img class="service-card-img"
+                     src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80&fit=crop"
+                     alt="GST Compliance" loading="lazy">
+                <div class="service-card-body">
+                    <h4>GST Services</h4>
+                    <p>GST registration, return filing, reconciliation, audits and advisory for all business types.</p>
+                    <span class="service-card-link">Learn More →</span>
+                </div>
+            </a>
+
+            <a class="service-card" href="fdi.html">
+                <img class="service-card-img"
+                     src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&fit=crop"
+                     alt="FDI Compliance" loading="lazy">
+                <div class="service-card-body">
+                    <h4>FDI Services</h4>
+                    <p>Foreign direct investment compliance, RBI reporting, FEMA advisory and repatriation support.</p>
+                    <span class="service-card-link">Learn More →</span>
+                </div>
+            </a>
+
+            <a class="service-card" href="company-law.html">
+                <img class="service-card-img"
+                     src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&q=80&fit=crop"
+                     alt="Company Law and Secretarial" loading="lazy">
+                <div class="service-card-body">
+                    <h4>Company Law & Secretarial</h4>
+                    <p>MCA filings, board resolutions, annual returns, ROC compliance and corporate governance.</p>
+                    <span class="service-card-link">Learn More →</span>
+                </div>
+            </a>
+
+            <a class="service-card" href="eso.html">
+                <img class="service-card-img"
+                     src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80&fit=crop"
+                     alt="Employee Stock Options" loading="lazy">
+                <div class="service-card-body">
+                    <h4>Employee Stock Options</h4>
+                    <p>ESOP structuring, valuation, taxation, compliance and employee communication support.</p>
+                    <span class="service-card-link">Learn More →</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Highlight -->
+    <div class="highlight-box reveal">
+        <h4>Compliance That Protects Your Business</h4>
+        <p>Regulatory non-compliance can result in penalties, reputational damage, and legal risk. Our team stays current with every change in Indian tax and corporate law — so your business is always protected, proactive, and prepared.</p>
+    </div>
+
+    <!-- Why Choose Us — photo left, list right -->
+    <div class="two-col reveal">
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=85&fit=crop"
+             alt="Professional CA compliance advisory"
+             loading="lazy">
+        <div class="content-block" style="margin-bottom:0">
+            <span class="section-title">Why Choose Us?</span>
+            <ul class="why-list">
+                <li>Independent, objective audit approach</li>
+                <li>Up-to-date knowledge of all regulatory changes</li>
+                <li>Dedicated CA assigned to every engagement</li>
+                <li>End-to-end support from planning to filing</li>
+                <li>Timely completion — no missed deadlines</li>
+                <li>Confidential and secure document handling</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta reveal">
+        <h3>Need Audit or Compliance Support?</h3>
+        <p>Talk to our expert team about your audit requirements, compliance obligations, or regulatory queries. We're here to help.</p>
+        <a href="../contact.html" class="cta-btn">Book Consultation</a>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+
+            <div class="footer-section">
+                <h4>Compliance Services</h4>
+                <ul>
+                    <!-- Same folder — no prefix -->
+                    <li><a href="audits.html">Audits</a></li>
+                    <li><a href="income-tax.html">Income Tax</a></li>
+                    <li><a href="gst.html">GST Services</a></li>
+                    <li><a href="fdi.html">FDI Services</a></li>
+                    <li><a href="company-law.html">Company Law</a></li>
+                    <li><a href="eso.html">Employee Stock Options</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <!-- Root — use ../ -->
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../start-a-business/start-business-main.html">Start A Business</a></li>
+                    <li><a href="../Registrations/income-tax-main.html">Tax Services</a></li>
+                    <li><a href="../nri-services.html">NRI Services</a></li>
+                    <li><a href="../contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <!-- Mix of same-folder and cross-folder -->
+                    <li><a href="audit-compliance-main.html">Audit & Assurance</a></li>
+                    <li><a href="../Registrations/income-tax-main.html">Income Tax</a></li>
+                    <li><a href="../Registrations/gst-main.html">GST Services</a></li>
+                    <li><a href="../nri-services.html">NRI Services</a></li>
+                    <li><a href="../Backoffice/backoffice-main.html">Backoffice Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-info">
+                    <strong>Shreyas U M & Associates</strong><br>
+                    Chartered Accountants<br><br>
+                    <strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+                    <strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+                    <strong>📍 Address:</strong> India<br><br>
+                    <strong>🕐 Business Hours:</strong><br>
+                    Monday – Friday: 9:00 AM – 6:00 PM<br>
+                    Saturday: 10:00 AM – 2:00 PM
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shreyas U M & Associates | Chartered Accountants | India. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Sticky header shadow
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

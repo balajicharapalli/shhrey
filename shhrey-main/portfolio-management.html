@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Management - Shreyas U M & Associates</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;color:#333;background-color:#fff;overflow-x:hidden}
+        a{text-decoration:none;transition:all .3s ease}
+
+        /* ── HEADER TOP ── */
+        .header-top{background-color:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+        .header-top-inner{max-width:1200px;margin:0 auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+        .header-top-left{display:flex;gap:15px}
+        .header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+        .header-top-left a:hover{color:#fff;text-decoration:underline}
+        .header-top-right{display:flex;gap:20px}
+        .header-top-right a{color:#e8e8e8;font-size:13px}
+
+        /* ── HEADER ── */
+        header{background-color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+        header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.13)}
+        .header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+        .logo:hover{color:#0066cc}
+        nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+        nav li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+        nav li a:hover,nav li a.active{color:#0066cc;border-bottom-color:#0066cc;background-color:rgba(0,102,204,.05)}
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb{background-color:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+        .breadcrumb-inner{max-width:1200px;margin:0 auto;font-size:13px;color:#666}
+        .breadcrumb-inner a{color:#0066cc}
+
+        /* ── PAGE HEADER ── */
+        .page-header{
+            position:relative;color:#fff;
+            padding:110px 20px 90px;text-align:center;overflow:hidden;
+            background:linear-gradient(135deg,rgba(0,70,140,0.93) 0%,rgba(0,40,90,0.96) 50%, rgba(0,80,60,0.92) 100%),
+                       url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&q=85&fit=crop') center/cover no-repeat;
+        }
+        .page-header::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(ellipse at 65% 35%,rgba(0,210,120,0.08) 0%,transparent 65%);
+            pointer-events:none;
+        }
+        .page-header h1{
+            font-family:'Playfair Display',serif;
+            font-size:52px;margin-bottom:22px;font-weight:800;
+            line-height:1.15;letter-spacing:-0.5px;
+            animation:fadeDown .8s ease both;
+        }
+        .page-header p{
+            font-size:17px;max-width:680px;margin:0 auto;opacity:.92;
+            font-weight:300;line-height:1.75;
+            animation:fadeDown .8s .2s ease both;
+        }
+        .page-header-badge{
+            display:inline-block;margin-bottom:18px;
+            padding:6px 18px;border-radius:20px;
+            background:rgba(0,210,120,0.15);border:1px solid rgba(0,210,120,0.35);
+            font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+            color:rgba(180,255,220,0.95);
+            animation:fadeDown .8s ease both;
+        }
+        @keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+        /* ── MAIN ── */
+        .main-content{max-width:1200px;margin:0 auto;padding:60px 20px}
+
+        /* ── HERO STRIP ── */
+        .hero-strip{
+            display:grid;grid-template-columns:1fr 1fr;gap:0;
+            border-radius:16px;overflow:hidden;
+            box-shadow:0 12px 40px rgba(0,0,0,.12);
+            margin-bottom:60px;
+            animation:fadeUp .8s .1s ease both;
+        }
+        .hero-strip-img{width:100%;height:320px;object-fit:cover;display:block;transition:transform .6s ease}
+        .hero-strip:hover .hero-strip-img{transform:scale(1.04)}
+        .hero-strip-img2{width:100%;height:320px;object-fit:cover;display:block;transition:transform .6s ease}
+        .hero-strip:hover .hero-strip-img2{transform:scale(1.04)}
+
+        /* ── CONTENT SECTIONS ── */
+        .content-section{margin-bottom:50px}
+        .content-section h2{
+            font-family:'Playfair Display',serif;
+            font-size:30px;color:#1a2332;margin-bottom:22px;font-weight:700;
+            border-bottom:3px solid #0066cc;padding-bottom:15px;
+        }
+        .content-section p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+        .content-section ul{margin-left:20px;margin-bottom:15px}
+        .content-section li{color:#555;font-size:14px;line-height:1.85;margin-bottom:12px}
+        .content-section ul li:before{content:"✓ ";color:#0066cc;font-weight:bold;margin-right:10px}
+
+        /* ── STATS STRIP ── */
+        .stats-strip{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+            gap:0;border-radius:14px;overflow:hidden;
+            box-shadow:0 8px 30px rgba(0,0,0,.10);
+            margin:40px 0;
+        }
+        .stat-block{
+            background:#1a2332;padding:34px 24px;text-align:center;
+            border-right:1px solid rgba(255,255,255,.08);
+            transition:background .3s ease;
+        }
+        .stat-block:last-child{border-right:none}
+        .stat-block:hover{background:#0a6640}
+        .stat-num{
+            font-family:'Playfair Display',serif;
+            font-size:38px;font-weight:800;color:#fff;
+            line-height:1;margin-bottom:8px;
+        }
+        .stat-label{font-size:12.5px;color:rgba(255,255,255,.7);font-weight:500;letter-spacing:0.5px}
+
+        /* ── SERVICE CARDS GRID ── */
+        .entity-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+            gap:22px;margin:30px 0;
+        }
+        .entity-card{
+            background:#fff;border:1px solid #e8e8e8;border-radius:14px;
+            overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);
+            transition:transform .35s ease,box-shadow .35s ease;cursor:default;
+        }
+        .entity-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,102,204,.15)}
+        .entity-card-img{width:100%;height:130px;object-fit:cover;display:block;transition:transform .5s ease}
+        .entity-card:hover .entity-card-img{transform:scale(1.07)}
+        .entity-card-body{padding:18px 16px}
+        .entity-card-body h4{font-size:14px;font-weight:700;color:#1a2332;margin-bottom:7px}
+        .entity-card-body p{font-size:12.5px;color:#666;line-height:1.65;margin:0}
+        .entity-card-tag{
+            display:inline-block;margin-top:10px;padding:3px 10px;
+            background:#e8f0f7;color:#0066cc;font-size:11px;font-weight:600;border-radius:20px;
+        }
+        .entity-card-tag.green{background:#e6f7ef;color:#0a6640}
+
+        /* ── TWO-COL ── */
+        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-bottom:50px}
+        .two-col-img{
+            width:100%;height:300px;object-fit:cover;border-radius:14px;
+            box-shadow:0 8px 30px rgba(0,0,0,.12);display:block;
+            transition:transform .5s ease,box-shadow .5s ease;
+        }
+        .two-col-img:hover{transform:scale(1.02);box-shadow:0 14px 40px rgba(0,0,0,.18)}
+
+        /* ── ASSET CLASS GRID ── */
+        .asset-grid{
+            display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:18px;margin:28px 0;
+        }
+        .asset-card{
+            border-radius:12px;padding:24px 20px;text-align:center;
+            border:1px solid #e0ede6;background:#f7fbf9;
+            transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease,background .3s ease;
+        }
+        .asset-card:hover{
+            transform:translateY(-5px);box-shadow:0 10px 28px rgba(10,102,64,.12);
+            border-color:#0a6640;background:#fff;
+        }
+        .asset-icon{font-size:30px;margin-bottom:12px;display:block}
+        .asset-card h4{font-size:13.5px;font-weight:700;color:#1a2332;margin-bottom:6px}
+        .asset-card p{font-size:12px;color:#666;line-height:1.6;margin:0}
+
+        /* ── PROCESS STEPS ── */
+        .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:20px;margin:28px 0}
+        .step-card{
+            background:#f8faff;border:1px solid #d0e4ff;border-radius:12px;
+            padding:24px 18px;text-align:center;
+            transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+        }
+        .step-card:hover{transform:translateY(-5px);box-shadow:0 10px 28px rgba(0,102,204,.13);border-color:#0066cc}
+        .step-num{
+            width:42px;height:42px;background:linear-gradient(135deg,#0066cc,#004999);
+            color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+            font-size:17px;font-weight:700;margin:0 auto 13px;
+            box-shadow:0 4px 12px rgba(0,102,204,.3);
+        }
+        .step-card h4{font-size:14px;color:#1a2332;margin-bottom:7px;font-weight:700}
+        .step-card p{font-size:12px;color:#666;margin:0;line-height:1.6}
+
+        /* ── HIGHLIGHT BOX ── */
+        .highlight-box{
+            background:linear-gradient(135deg,#e8f0f7 0%,#f0f6ff 100%);
+            border-left:4px solid #0066cc;padding:24px;border-radius:0 12px 12px 0;margin:20px 0;
+            transition:box-shadow .3s ease;
+        }
+        .highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+        .highlight-box h4{color:#0066cc;font-size:16px;margin-bottom:10px;font-weight:700}
+        .highlight-box ul{margin-left:20px;margin-top:10px}
+        .highlight-box li{color:#555;font-size:13px;line-height:1.65;margin-bottom:8px}
+
+        /* ── GROWTH STRIP ── */
+        .growth-strip{
+            background:linear-gradient(135deg,#0a6640 0%,#064d30 100%);
+            border-radius:14px;padding:36px 40px;
+            display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
+            margin:40px 0;box-shadow:0 8px 30px rgba(10,102,64,.25);
+            transition:box-shadow .3s ease;
+        }
+        .growth-strip:hover{box-shadow:0 14px 40px rgba(10,102,64,.32)}
+        .growth-text h4{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700;margin-bottom:8px}
+        .growth-text p{color:rgba(255,255,255,.78);font-size:13.5px;line-height:1.7;margin:0}
+        .growth-cta{
+            display:inline-block;padding:12px 28px;background:#fff;color:#0a6640;
+            border-radius:6px;font-weight:700;font-size:13.5px;white-space:nowrap;
+            transition:all .3s ease;
+        }
+        .growth-cta:hover{background:#e6f7ef;transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.15)}
+
+        /* ── RISK METER CARDS ── */
+        .risk-grid{
+            display:grid;grid-template-columns:repeat(3,1fr);
+            gap:20px;margin:28px 0;
+        }
+        .risk-card{
+            border-radius:12px;padding:26px 22px;border:1px solid #e8e8e8;
+            transition:transform .3s ease,box-shadow .3s ease;
+        }
+        .risk-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.1)}
+        .risk-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px}
+        .risk-bar{height:6px;border-radius:3px;margin-bottom:14px;background:#e8e8e8;overflow:hidden}
+        .risk-fill{height:100%;border-radius:3px;transition:width .6s ease}
+        .risk-card h4{font-size:14px;font-weight:700;color:#1a2332;margin-bottom:6px}
+        .risk-card p{font-size:12px;color:#666;line-height:1.6;margin:0}
+        .risk-card.low{border-color:#c8e6d4;background:#f7fbf9}
+        .risk-card.low .risk-label{color:#0a6640}
+        .risk-card.low .risk-fill{background:#0a6640;width:30%}
+        .risk-card.med{border-color:#fde8c0;background:#fffaf2}
+        .risk-card.med .risk-label{color:#b8620a}
+        .risk-card.med .risk-fill{background:#e8900a;width:60%}
+        .risk-card.high{border-color:#f5c6c6;background:#fff5f5}
+        .risk-card.high .risk-label{color:#c0392b}
+        .risk-card.high .risk-fill{background:#c0392b;width:90%}
+
+        /* ── CTA SECTION ── */
+        .cta-section{
+            position:relative;padding:70px 20px;text-align:center;border-radius:18px;
+            margin:50px 0;overflow:hidden;
+            background:linear-gradient(135deg,rgba(0,70,140,0.94) 0%,rgba(0,40,90,0.96) 50%,rgba(0,80,60,0.93) 100%),
+                       url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80&fit=crop') center/cover no-repeat;
+            color:#fff;
+        }
+        .cta-section::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(ellipse at 50% 0%,rgba(0,210,120,0.08) 0%,transparent 60%);
+            pointer-events:none;
+        }
+        .cta-section h2{font-family:'Playfair Display',serif;font-size:36px;color:#fff;margin-bottom:16px;font-weight:700}
+        .cta-section p{font-size:16px;color:rgba(255,255,255,.88);margin-bottom:30px;font-weight:300}
+        .cta-buttons{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+        .cta-btn{padding:13px 34px;border-radius:6px;font-weight:600;transition:all .3s ease;display:inline-block;font-size:14px}
+        .cta-primary{background-color:#fff;color:#0a6640}
+        .cta-primary:hover{background-color:#e6f7ef;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+        .cta-secondary{background-color:transparent;color:#fff;border:2px solid rgba(255,255,255,.7)}
+        .cta-secondary:hover{background-color:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-2px)}
+        .contact-info{margin-top:24px;color:rgba(255,255,255,.82);font-size:14px;line-height:2}
+        .contact-info a{color:#7ab3f5}
+        .contact-info a:hover{color:#fff}
+        .contact-info strong{color:#fff}
+
+        /* ── FOOTER ── */
+        .footer{background-color:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+        .footer-inner{max-width:1200px;margin:0 auto}
+        .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+        .footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+        .footer-section ul{list-style:none}
+        .footer-section li{margin-bottom:8px}
+        .footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+        .footer-section a:hover{color:#fff}
+        .footer-info{color:#bbb;font-size:12px;line-height:1.9}
+        .footer-info strong{color:#fff}
+        .footer-info a{color:#7ab3f5}
+        .footer-info a:hover{color:#fff}
+        .footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+        /* ── SCROLL REVEAL ── */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:768px){
+            .page-header h1{font-size:32px}
+            .two-col{grid-template-columns:1fr}
+            .hero-strip{grid-template-columns:1fr}
+            .hero-strip-img2{display:none}
+            .cta-section h2{font-size:26px}
+            nav ul{flex-direction:column;gap:0}
+            .stat-num{font-size:28px}
+            .risk-grid{grid-template-columns:1fr}
+            .growth-strip{grid-template-columns:1fr;text-align:center}
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+    <div class="header-top-inner">
+        <div class="header-top-left">
+            <a href="mailto:info@shreyasum.com">info@shreyasum.com</a>
+            <span>Call +91 91416 35572</span>
+        </div>
+        <div class="header-top-right">
+            <a href="index.html">Back to Home</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a href="index.html" class="logo">Shreyas U M & Associates</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="start-a-business/start-business-main.html">Start A Business</a></li>
+                <li><a href="Registrations/income-tax-main.html">Registrations</a></li>
+                <li><a href="nri-services.html" class="active">NRI Services</a></li>
+                <li><a href="Compliance/audit-compliance-main.html">Compliance</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="index.html">Home</a> &rsaquo;
+        <a href="nri-services.html">NRI Services</a> &rsaquo;
+        Portfolio Management
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="page-header-badge">📈 Wealth Growth & Risk Management</div>
+    <h1>Portfolio Management</h1>
+    <p>Strategic planning and management of your investment portfolio to maximise returns and manage risk effectively.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Hero image strip -->
+    <div class="hero-strip reveal">
+        <img class="hero-strip-img"
+             src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=85&fit=crop"
+             alt="Investment portfolio management and financial planning"
+             loading="lazy">
+        <img class="hero-strip-img2"
+             src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=85&fit=crop"
+             alt="Financial charts and portfolio growth"
+             loading="lazy">
+    </div>
+
+    <!-- What is Portfolio Management -->
+    <div class="content-section reveal">
+        <h2>What is Portfolio Management?</h2>
+        <p>Portfolio management is the art and science of making decisions about investment mix and policy, matching investments to objectives, and balancing risk against performance. A well-managed portfolio doesn't just chase returns — it is built around your financial goals, risk appetite, time horizon, and tax efficiency.</p>
+        <p>Our Chartered Accountants bring a unique advantage: deep integration of taxation, compliance, and investment planning. We look beyond market returns to help you retain more of what you earn — legally and efficiently.</p>
+
+        <div class="highlight-box">
+            <h4>💡 The CA Advantage in Portfolio Management</h4>
+            <ul>
+                <li>Tax-optimised investment decisions — LTCG, STCG, dividend income structuring</li>
+                <li>FEMA-compliant portfolio strategies for NRIs and foreign investors</li>
+                <li>Coordination between investment, compliance, and business financials</li>
+                <li>Objective, fee-transparent advice — we work for you, not commissions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Stats Strip -->
+    <div class="stats-strip reveal">
+        <div class="stat-block">
+            <div class="stat-num">₹500Cr+</div>
+            <div class="stat-label">Assets Under Advisory</div>
+        </div>
+        <div class="stat-block">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Clients Served</div>
+        </div>
+        <div class="stat-block">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-block">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Tax-Optimised Approach</div>
+        </div>
+    </div>
+
+    <!-- Portfolio Services -->
+    <div class="content-section reveal">
+        <h2>Our Portfolio Management Services</h2>
+        <p>We offer end-to-end portfolio advisory across asset classes, risk profiles, and investor types — from individuals and HNIs to corporates and NRIs.</p>
+
+        <div class="entity-grid">
+            <div class="entity-card">
+                <img class="entity-card-img"
+                     src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80&fit=crop"
+                     alt="Equity Portfolio" loading="lazy">
+                <div class="entity-card-body">
+                    <h4>Equity Portfolio Advisory</h4>
+                    <p>Strategic allocation across large-cap, mid-cap, and sectoral equities for long-term wealth creation.</p>
+                    <span class="entity-card-tag green">High Growth</span>
+                </div>
+            </div>
+            <div class="entity-card">
+                <img class="entity-card-img"
+                     src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80&fit=crop"
+                     alt="Debt & Fixed Income" loading="lazy">
+                <div class="entity-card-body">
+                    <h4>Debt & Fixed Income Planning</h4>
+                    <p>Bonds, debentures, FDs, and debt mutual funds structured for stability and tax efficiency.</p>
+                    <span class="entity-card-tag">Stable Returns</span>
+                </div>
+            </div>
+            <div class="entity-card">
+                <img class="entity-card-img"
+                     src="https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?w=600&q=80&fit=crop"
+                     alt="Mutual Fund Advisory" loading="lazy">
+                <div class="entity-card-body">
+                    <h4>Mutual Fund Advisory</h4>
+                    <p>Goal-based fund selection, SIP structuring, and rebalancing across direct and regular plans.</p>
+                    <span class="entity-card-tag green">Goal-Based</span>
+                </div>
+            </div>
+            <div class="entity-card">
+                <img class="entity-card-img"
+                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop"
+                     alt="Real Estate Allocation" loading="lazy">
+                <div class="entity-card-body">
+                    <h4>Real Estate Allocation</h4>
+                    <p>Advisory on real estate as an asset class — REITs, direct property, and NRI repatriation planning.</p>
+                    <span class="entity-card-tag">Tangible Assets</span>
+                </div>
+            </div>
+            <div class="entity-card">
+                <img class="entity-card-img"
+                     src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?w=600&q=80&fit=crop"
+                     alt="NRI Portfolio Management" loading="lazy">
+                <div class="entity-card-body">
+                    <h4>NRI Portfolio Management</h4>
+                    <p>FEMA-compliant investment in Indian markets via NRE/NRO/FCNR accounts and PIS route.</p>
+                    <span class="entity-card-tag green">NRI Focused</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Risk Profile Section -->
+    <div class="content-section reveal">
+        <h2>We Manage Portfolios Across All Risk Profiles</h2>
+        <p>Every investor is different. We begin with a thorough risk assessment and design a portfolio that matches your comfort level, time horizon, and financial goals.</p>
+
+        <div class="risk-grid">
+            <div class="risk-card low">
+                <div class="risk-label">Conservative</div>
+                <div class="risk-bar"><div class="risk-fill"></div></div>
+                <h4>Capital Preservation</h4>
+                <p>Debt funds, government bonds, and fixed deposits — designed for stability and consistent income with minimal market exposure.</p>
+            </div>
+            <div class="risk-card med">
+                <div class="risk-label">Balanced</div>
+                <div class="risk-bar"><div class="risk-fill"></div></div>
+                <h4>Balanced Growth</h4>
+                <p>A blend of equity and debt — hybrid funds, balanced advantage funds — offering moderate growth with downside protection.</p>
+            </div>
+            <div class="risk-card high">
+                <div class="risk-label">Aggressive</div>
+                <div class="risk-bar"><div class="risk-fill"></div></div>
+                <h4>Maximum Growth</h4>
+                <p>Equity-heavy portfolios with mid-cap, small-cap, and thematic exposure — built for long-term wealth maximisation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Asset Classes — with side photo -->
+    <div class="two-col reveal">
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=800&q=85&fit=crop"
+             alt="Diversified asset class investment allocation"
+             loading="lazy">
+        <div class="content-section" style="margin-bottom:0">
+            <h2>Asset Classes We Cover</h2>
+            <p>Diversification across asset classes is the foundation of a resilient portfolio. We advise across the full investment universe.</p>
+
+            <div class="asset-grid" style="margin-top:16px">
+                <div class="asset-card">
+                    <span class="asset-icon">📊</span>
+                    <h4>Equities & Stocks</h4>
+                    <p>Listed shares, IPOs, and sectoral picks</p>
+                </div>
+                <div class="asset-card">
+                    <span class="asset-icon">📄</span>
+                    <h4>Debt Instruments</h4>
+                    <p>Bonds, NCDs, FDs, and T-Bills</p>
+                </div>
+                <div class="asset-card">
+                    <span class="asset-icon">🏘️</span>
+                    <h4>Real Estate & REITs</h4>
+                    <p>Property allocation and REIT exposure</p>
+                </div>
+                <div class="asset-card">
+                    <span class="asset-icon">🥇</span>
+                    <h4>Gold & Commodities</h4>
+                    <p>Sovereign gold bonds, gold ETFs</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Growth Strip CTA -->
+    <div class="growth-strip reveal">
+        <div class="growth-text">
+            <h4>Your Money Should Work as Hard as You Do</h4>
+            <p>Start with a free portfolio review. We assess your current investments, identify gaps, and show you exactly how we can optimise returns and reduce tax drag — at no obligation.</p>
+        </div>
+        <a href="contact.html" class="growth-cta">Get Free Review →</a>
+    </div>
+
+    <!-- Our Process -->
+    <div class="content-section reveal">
+        <h2>Our Portfolio Management Process</h2>
+        <div class="steps">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <h4>Goal Discovery</h4>
+                <p>Understanding your financial goals, timeline, income, and lifestyle requirements.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <h4>Risk Profiling</h4>
+                <p>Detailed assessment of your risk tolerance, existing assets, and tax bracket.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <h4>Portfolio Design</h4>
+                <p>Building a customised asset allocation plan optimised for returns and tax efficiency.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <h4>Implementation</h4>
+                <p>Executing investments with guidance on timing, platform selection, and documentation.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">5</div>
+                <h4>Monitoring & Review</h4>
+                <p>Quarterly portfolio reviews with rebalancing recommendations based on market conditions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us — with side photo -->
+    <div class="two-col reveal">
+        <div class="content-section" style="margin-bottom:0">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>Chartered Accountants — tax and investment expertise under one roof</li>
+                <li>No product commissions — purely advisory, completely unbiased</li>
+                <li>FEMA and RBI compliant strategies for NRIs and foreign investors</li>
+                <li>Holistic view — aligns your investments with your business and tax planning</li>
+                <li>Transparent reporting with performance attribution every quarter</li>
+            </ul>
+            <div class="highlight-box" style="margin-top:20px">
+                <h4>📋 What You Receive</h4>
+                <ul>
+                    <li>Personalised Investment Policy Statement (IPS)</li>
+                    <li>Detailed asset allocation report with rationale</li>
+                    <li>Quarterly performance and rebalancing report</li>
+                    <li>Annual tax harvesting and optimisation plan</li>
+                    <li>Priority access to our CA team for financial queries</li>
+                </ul>
+            </div>
+        </div>
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=800&q=85&fit=crop"
+             alt="CA team providing expert portfolio advice"
+             loading="lazy">
+    </div>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section reveal" id="contact">
+        <h2>Start Growing Your Wealth Today</h2>
+        <p>Let our experts build and manage a portfolio that works for your goals, your risk appetite, and your tax situation. Get started with a free consultation.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="cta-btn cta-primary">Schedule Free Consultation</a>
+            <a href="contact.html" class="cta-btn cta-secondary">Talk to an Expert</a>
+        </div>
+        <div class="contact-info">
+            <div><strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a></div>
+            <div><strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a></div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="start-a-business/start-business-main.html">Start A Business</a></li>
+                    <li><a href="nri-services.html">NRI Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                   
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="Compliance/audit-compliance-main.html">Audit & Assurance</a></li>
+
+                    <li><a href="nri-services.html">NRI Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <div class="footer-info">
+                    <strong>Shreyas U M & Associates</strong><br>
+                    Chartered Accountants<br><br>
+                    <strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+                    <strong>📧 Email:</strong> <a href="mailto:info@shreyasum.com">info@shreyasum.com</a><br>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2026 Shreyas U M & Associates. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

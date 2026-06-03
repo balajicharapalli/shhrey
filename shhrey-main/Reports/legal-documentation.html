@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Documentation - Gift Deeds, Agreements, Documentation Services</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:#333;background-color:#fff;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all 0.3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background-color:#1a2332;color:white;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:0 auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background-color:white;box-shadow:0 2px 8px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0066cc}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav li a:hover,nav li a.active{color:#0066cc;border-bottom-color:#0066cc;background-color:rgba(0,102,204,0.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background-color:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:0 auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── PAGE HEADER ── */
+.page-header{
+    position:relative;color:white;
+    padding:105px 20px 88px;text-align:center;overflow:hidden;
+    background:linear-gradient(135deg,rgba(0,82,163,0.92) 0%,rgba(0,50,110,0.95) 100%),
+               url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.page-header::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.07) 0%,transparent 65%);
+    pointer-events:none;
+}
+.page-header h1{
+    font-family:'Playfair Display',serif;
+    font-size:50px;margin-bottom:20px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.page-header p{
+    font-size:17px;max-width:750px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:0 auto;padding:60px 20px}
+
+/* ── HERO IMAGE ── */
+.content-hero-img{
+    width:100%;height:370px;object-fit:cover;
+    border-radius:14px;margin-bottom:52px;display:block;
+    box-shadow:0 10px 36px rgba(0,0,0,.13);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.content-hero-img:hover{transform:scale(1.012);box-shadow:0 18px 50px rgba(0,0,0,.18)}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-bottom:52px;align-items:center}
+.two-col-img{
+    width:100%;height:290px;object-fit:cover;border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.11);display:block;
+    transition:transform .5s ease,box-shadow .5s ease;
+}
+.two-col-img:hover{transform:scale(1.03);box-shadow:0 14px 40px rgba(0,0,0,.17)}
+
+/* ── CONTENT SECTIONS ── */
+.content-section{margin-bottom:44px}
+.content-section h2{
+    font-family:'Playfair Display',serif;
+    font-size:28px;color:#1a2332;margin-bottom:20px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;
+}
+.content-section h3{font-size:18px;color:#1a2332;margin-bottom:14px;font-weight:600;margin-top:20px}
+.content-section p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+.content-section ul,.content-section ol{margin-left:20px;margin-bottom:15px}
+.content-section li{color:#555;font-size:14px;line-height:1.85;margin-bottom:10px}
+.content-section ul li:before{content:"✓ ";color:#0066cc;font-weight:bold;margin-right:10px}
+
+/* ── SERVICES GRID ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:30px}
+.service-card{
+    background:#fff;border:1px solid #e0e0e0;border-radius:14px;
+    overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+}
+.service-card:hover{box-shadow:0 14px 36px rgba(0,102,204,.15);transform:translateY(-7px);border-color:#0066cc}
+.service-card-img{width:100%;height:155px;object-fit:cover;display:block;transition:transform .5s ease}
+.service-card:hover .service-card-img{transform:scale(1.06)}
+.service-card-body{padding:22px 20px}
+.service-card-body h3{font-size:17px;color:#0066cc;margin-bottom:10px;font-weight:700}
+.service-card-body p{color:#666;font-size:14px;line-height:1.65;margin-bottom:16px}
+.service-card-body ul{margin-left:0;margin-bottom:0;list-style:none;padding:0}
+.service-card-body li{color:#555;font-size:13px;margin-bottom:7px;padding-left:16px;position:relative}
+.service-card-body li:before{content:"•";color:#0066cc;font-weight:bold;position:absolute;left:0}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+    background:linear-gradient(135deg,#e8f0f7 0%,#f0f6ff 100%);
+    border-left:4px solid #0066cc;padding:26px;
+    border-radius:0 12px 12px 0;margin:22px 0;
+    transition:box-shadow .3s ease;
+}
+.highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+.highlight-box h4{color:#0066cc;font-size:16px;margin-bottom:10px;font-weight:700}
+.highlight-box p{color:#555;font-size:14px;margin-bottom:10px;line-height:1.75}
+.highlight-box ul{margin-left:20px;margin-top:10px}
+.highlight-box li{color:#555;font-size:13px;line-height:1.65;margin-bottom:8px}
+
+/* ── DOCUMENT TYPES STRIP ── */
+.doc-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin:32px 0}
+.doc-type{
+    background:#f8faff;border:1px solid #d0e4ff;border-radius:10px;
+    padding:20px 14px;text-align:center;
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s,background .3s;
+}
+.doc-type:hover{transform:translateY(-5px);box-shadow:0 10px 26px rgba(0,102,204,.14);border-color:#0066cc;background:#eef4ff}
+.doc-icon{font-size:26px;margin-bottom:10px;display:block}
+.doc-type span{font-size:12.5px;font-weight:600;color:#1a2332;display:block}
+
+/* ── BOTTOM BANNER ── */
+.bottom-banner{
+    width:100%;height:240px;object-fit:cover;border-radius:14px;
+    margin:10px 0 44px;display:block;
+    box-shadow:0 8px 28px rgba(0,0,0,.10);
+    transition:transform .5s ease;
+}
+.bottom-banner:hover{transform:scale(1.012)}
+
+/* ── NAV BUTTONS ── */
+.nav-buttons{display:flex;gap:15px;margin:50px 0;flex-wrap:wrap;justify-content:center}
+.btn{padding:13px 32px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s ease;text-decoration:none;display:inline-block;text-align:center}
+.btn-primary{background:linear-gradient(135deg,#0066cc,#004999);color:white;box-shadow:0 4px 14px rgba(0,102,204,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,102,204,.4);color:white}
+.btn-secondary{background-color:white;color:#0066cc;border:2px solid #0066cc}
+.btn-secondary:hover{background-color:#f0f6ff;transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,102,204,.12)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background-color:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-section h4{color:white;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:white}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:white}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,0.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+    .page-header h1{font-size:30px}
+    .content-section h2{font-size:22px}
+    .two-col{grid-template-columns:1fr}
+    .nav-buttons{flex-direction:column}
+    .btn{width:100%;text-align:center}
+    nav ul{flex-direction:column;gap:0}
+    nav li a{padding:12px 14px}
+    .services-grid{grid-template-columns:1fr}
+    .content-hero-img{height:220px}
+    .bottom-banner{height:160px}
+}
+    </style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+<div class="header-top-inner">
+<div class="header-top-left">
+<a href="mailto:info@reportsservices.com">info@reportsservices.com</a>
+<span>Call +91-XXXXX XXXXX</span>
+</div>
+<div class="header-top-right">
+<a href="reports-main.html">Home</a>
+<a href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+<div class="header-inner">
+<a href="reports-main.html" class="logo">📑 Reports & Documentation</a>
+<nav>
+<ul>
+<li><a href="reports-main.html">Home</a></li>
+<li><a href="business-reports.html">Business Reports</a></li>
+<li><a href="legal-documentation.html" class="active">Legal Documentation</a></li>
+<li><a href="funding-solutions.html">Funding Solutions</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+<div class="breadcrumb-inner">
+<a href="reports-main.html">Home</a> &rsaquo; <span>Legal Documentation</span>
+</div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+<h1>Legal Documentation Services</h1>
+<p>Professional legal documents including gift deeds, shareholder agreements, and joint development agreements prepared by legal experts.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+<!-- Hero image -->
+<img class="content-hero-img reveal"
+     src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=1400&q=85&fit=crop"
+     alt="Legal documentation and professional drafting services"
+     loading="lazy">
+
+<!-- Overview with side image -->
+<div class="two-col reveal">
+<div class="content-section" style="margin-bottom:0">
+    <h2>Overview</h2>
+    <p>We provide <strong>comprehensive legal documentation services</strong> designed to protect your interests, ensure regulatory compliance, and facilitate business transactions. Every document is prepared with precision, legal accuracy, and a thorough understanding of current laws and regulations.</p>
+    <p>Our experienced team handles everything from simple agreements to complex multi-party legal instruments — ensuring your documents are enforceable, professionally structured, and tailored to your specific requirements.</p>
+</div>
+<img class="two-col-img"
+     src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=800&q=80&fit=crop"
+     alt="Legal professional reviewing documentation"
+     loading="lazy">
+</div>
+
+<!-- Document Types Quick Reference -->
+<div class="content-section reveal">
+<h2>Documents We Prepare</h2>
+<div class="doc-types">
+    <div class="doc-type">
+        <span class="doc-icon">🏠</span>
+        <span>Gift Deeds</span>
+    </div>
+    <div class="doc-type">
+        <span class="doc-icon">🤝</span>
+        <span>Shareholder Agreements</span>
+    </div>
+    <div class="doc-type">
+        <span class="doc-icon">🏗️</span>
+        <span>JDA</span>
+    </div>
+    <div class="doc-type">
+        <span class="doc-icon">📄</span>
+        <span>MoU / NDA</span>
+    </div>
+    <div class="doc-type">
+        <span class="doc-icon">⚖️</span>
+        <span>Legal Notices</span>
+    </div>
+    <div class="doc-type">
+        <span class="doc-icon">🔏</span>
+        <span>Power of Attorney</span>
+    </div>
+    <div class="doc-type">
+        <span class="doc-icon">📋</span>
+        <span>Service Agreements</span>
+    </div>
+</div>
+</div>
+
+<!-- Services Grid -->
+<div class="content-section reveal">
+<h2>Legal Documentation Services</h2>
+<div class="services-grid">
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80&fit=crop"
+     alt="Gift Deeds and property documents" loading="lazy">
+<div class="service-card-body">
+<h3>🏠 Gift Deeds</h3>
+<p>Professionally drafted gift deed documents for transfer of movable and immovable property.</p>
+<ul>
+<li>Property transfer documentation</li>
+<li>Stamp duty guidance</li>
+<li>Registration assistance</li>
+<li>Legal compliance verification</li>
+<li>Family & business transfers</li>
+</ul>
+</div>
+</div>
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80&fit=crop"
+     alt="Shareholder and partnership agreements" loading="lazy">
+<div class="service-card-body">
+<h3>🤝 Shareholder Agreements</h3>
+<p>Comprehensive shareholder and partnership agreements protecting all stakeholder interests.</p>
+<ul>
+<li>Rights & obligations drafting</li>
+<li>Exit clause provisions</li>
+<li>Dispute resolution mechanisms</li>
+<li>Voting rights structure</li>
+<li>Dividend policy documentation</li>
+</ul>
+</div>
+</div>
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&fit=crop"
+     alt="Joint Development Agreements" loading="lazy">
+<div class="service-card-body">
+<h3>🏗️ Joint Development Agreements</h3>
+<p>Detailed JDA documentation for real estate and infrastructure development projects.</p>
+<ul>
+<li>Project scope definition</li>
+<li>Revenue sharing structures</li>
+<li>Construction timelines</li>
+<li>Liability clauses</li>
+<li>Regulatory compliance</li>
+</ul>
+</div>
+</div>
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop"
+     alt="MoU NDA and general agreements" loading="lazy">
+<div class="service-card-body">
+<h3>📝 MoU, NDA & General Agreements</h3>
+<p>Wide range of business agreements including MoUs, NDAs, and service contracts.</p>
+<ul>
+<li>Non-disclosure agreements</li>
+<li>Memoranda of understanding</li>
+<li>Service level agreements</li>
+<li>Vendor & supplier contracts</li>
+<li>Employment agreements</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Highlight box -->
+<div class="highlight-box reveal">
+<h4>Why Choose Our Legal Documentation?</h4>
+<p>Our legal documentation services are prepared by professionals with deep knowledge of Indian law, regulatory requirements, and industry best practices.</p>
+<ul>
+<li>Legally accurate and enforceable documents</li>
+<li>Customised to your specific requirements</li>
+<li>Compliance with current laws and regulations</li>
+<li>Quick turnaround without compromising quality</li>
+<li>Ongoing support and document review</li>
+<li>Confidential and secure handling of all documents</li>
+</ul>
+</div>
+
+<!-- Bottom banner -->
+<img class="bottom-banner reveal"
+     src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&q=80&fit=crop"
+     alt="Professional legal and documentation services team"
+     loading="lazy">
+
+<div class="nav-buttons reveal">
+<a href="reports-main.html" class="btn btn-secondary">← Back to All Services</a>
+<a href="../contact.html" class="btn btn-primary">Request Legal Documentation →</a>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-content">
+
+<div class="footer-section">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="../index.html">Home</a></li>
+<li><a href="business-reports.html">Business Reports</a></li>
+<li><a href="legal-documentation.html">Legal Documentation</a></li>
+<li><a href="funding-solutions.html">Funding Solutions</a></li>
+<li><a href="../contact.html">Contact Us</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Legal</h4>
+<ul>
+<li><a href="../terms.html">Terms & Conditions</a></li>
+<li><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li><a href="../disclaimer.html">Disclaimer</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Services</h4>
+<ul>
+<li><a href="legal-documentation.html">Gift Deeds</a></li>
+<li><a href="legal-documentation.html">Agreements</a></li>
+<li><a href="legal-documentation.html">JDA</a></li>
+<li><a href="legal-documentation.html">Drafting</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<div class="footer-info">
+<strong>Reports & Documentation Services</strong><br>
+Professional Business Solutions<br><br>
+<strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+<strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+</div>
+</div>
+
+</div>
+<div class="footer-bottom">
+<p>&copy; Copyright 2026 Reports & Documentation Services. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+
+<script>
+    // Sticky header shadow
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
