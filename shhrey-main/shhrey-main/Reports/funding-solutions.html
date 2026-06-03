@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding Solutions - Bank Loans, SIDBI, NBFCs, Loan Syndication</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:#333;background-color:#fff;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all 0.3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background-color:#1a2332;color:white;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:0 auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background-color:white;box-shadow:0 2px 8px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0066cc}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav li a:hover,nav li a.active{color:#0066cc;border-bottom-color:#0066cc;background-color:rgba(0,102,204,0.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background-color:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:0 auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── PAGE HEADER ── */
+.page-header{
+    position:relative;color:white;
+    padding:105px 20px 88px;text-align:center;overflow:hidden;
+    background:linear-gradient(135deg,rgba(0,82,163,0.92) 0%,rgba(0,50,110,0.95) 100%),
+               url('https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.page-header::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.07) 0%,transparent 65%);
+    pointer-events:none;
+}
+.page-header h1{
+    font-family:'Playfair Display',serif;
+    font-size:50px;margin-bottom:20px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.page-header p{
+    font-size:17px;max-width:750px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:0 auto;padding:60px 20px}
+
+/* ── HERO IMAGE ── */
+.content-hero-img{
+    width:100%;height:370px;object-fit:cover;
+    border-radius:14px;margin-bottom:52px;display:block;
+    box-shadow:0 10px 36px rgba(0,0,0,.13);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.content-hero-img:hover{transform:scale(1.012);box-shadow:0 18px 50px rgba(0,0,0,.18)}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-bottom:52px;align-items:center}
+.two-col-img{
+    width:100%;height:290px;object-fit:cover;border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.11);display:block;
+    transition:transform .5s ease,box-shadow .5s ease;
+}
+.two-col-img:hover{transform:scale(1.03);box-shadow:0 14px 40px rgba(0,0,0,.17)}
+
+/* ── CONTENT SECTIONS ── */
+.content-section{margin-bottom:44px}
+.content-section h2{
+    font-family:'Playfair Display',serif;
+    font-size:28px;color:#1a2332;margin-bottom:20px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;
+}
+.content-section h3{font-size:18px;color:#1a2332;margin-bottom:14px;font-weight:600;margin-top:20px}
+.content-section p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+.content-section ul,.content-section ol{margin-left:20px;margin-bottom:15px}
+.content-section li{color:#555;font-size:14px;line-height:1.85;margin-bottom:10px}
+.content-section ul li:before{content:"✓ ";color:#0066cc;font-weight:bold;margin-right:10px}
+
+/* ── SERVICES GRID ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;margin-top:30px}
+.service-card{
+    background:#fff;border:1px solid #e0e0e0;border-radius:14px;
+    overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+}
+.service-card:hover{box-shadow:0 14px 36px rgba(0,102,204,.15);transform:translateY(-7px);border-color:#0066cc}
+.service-card-img{width:100%;height:155px;object-fit:cover;display:block;transition:transform .5s ease}
+.service-card:hover .service-card-img{transform:scale(1.06)}
+.service-card-body{padding:22px 20px}
+.service-card-body h3{font-size:17px;color:#0066cc;margin-bottom:10px;font-weight:700}
+.service-card-body p{color:#666;font-size:14px;line-height:1.65;margin-bottom:16px}
+.service-card-body ul{margin-left:15px;margin-bottom:0;list-style:none;padding:0}
+.service-card-body li{color:#555;font-size:13px;margin-bottom:7px;padding-left:16px;position:relative}
+.service-card-body li:before{content:"•";color:#0066cc;font-weight:bold;position:absolute;left:0}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+    background:linear-gradient(135deg,#e8f0f7 0%,#f0f6ff 100%);
+    border-left:4px solid #0066cc;padding:26px;
+    border-radius:0 12px 12px 0;margin:22px 0;
+    transition:box-shadow .3s ease;
+}
+.highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+.highlight-box h4{color:#0066cc;font-size:16px;margin-bottom:10px;font-weight:700}
+.highlight-box p{color:#555;font-size:14px;margin-bottom:10px;line-height:1.75}
+.highlight-box ul{margin-left:20px;margin-top:10px}
+.highlight-box li{color:#555;font-size:13px;line-height:1.65;margin-bottom:8px}
+
+/* ── STATS STRIP ── */
+.stats-strip{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:0;border-radius:14px;overflow:hidden;
+    box-shadow:0 6px 24px rgba(0,0,0,.10);margin:42px 0;
+}
+.stat-box{
+    background:linear-gradient(135deg,#0066cc,#004999);
+    padding:30px 20px;text-align:center;
+    border-right:1px solid rgba(255,255,255,.15);
+    transition:transform .3s ease,filter .3s ease;
+}
+.stat-box:last-child{border-right:none}
+.stat-box:hover{filter:brightness(1.12);transform:scale(1.03)}
+.stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;color:#fff;display:block;margin-bottom:6px}
+.stat-label{font-size:12px;color:rgba(255,255,255,.85);font-weight:400;letter-spacing:.5px;text-transform:uppercase}
+
+/* ── BOTTOM BANNER ── */
+.bottom-banner{
+    width:100%;height:240px;object-fit:cover;border-radius:14px;
+    margin:10px 0 44px;display:block;
+    box-shadow:0 8px 28px rgba(0,0,0,.10);
+    transition:transform .5s ease;
+}
+.bottom-banner:hover{transform:scale(1.012)}
+
+/* ── NAV BUTTONS ── */
+.nav-buttons{display:flex;gap:15px;margin:50px 0;flex-wrap:wrap;justify-content:center}
+.btn{padding:13px 32px;border:none;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s ease;text-decoration:none;display:inline-block;text-align:center}
+.btn-primary{background:linear-gradient(135deg,#0066cc,#004999);color:white;box-shadow:0 4px 14px rgba(0,102,204,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,102,204,.4);color:white}
+.btn-secondary{background-color:white;color:#0066cc;border:2px solid #0066cc}
+.btn-secondary:hover{background-color:#f0f6ff;transform:translateY(-3px);box-shadow:0 6px 18px rgba(0,102,204,.12)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background-color:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-section h4{color:white;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:white}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:white}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,0.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+    .page-header h1{font-size:30px}
+    .content-section h2{font-size:22px}
+    .two-col{grid-template-columns:1fr}
+    .nav-buttons{flex-direction:column}
+    .btn{width:100%;text-align:center}
+    nav ul{flex-direction:column;gap:0}
+    nav li a{padding:12px 14px}
+    .services-grid{grid-template-columns:1fr}
+    .content-hero-img{height:220px}
+    .bottom-banner{height:160px}
+    .stat-num{font-size:24px}
+}
+    </style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+<div class="header-top-inner">
+<div class="header-top-left">
+<a href="mailto:info@reportsservices.com">info@reportsservices.com</a>
+<span>Call +91-XXXXX XXXXX</span>
+</div>
+<div class="header-top-right">
+<a href="reports-main.html">Home</a>
+<a href="../contact.html">Contact Us</a>
+</div>
+</div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+<div class="header-inner">
+<a href="reports-main.html" class="logo">📑 Reports & Documentation</a>
+<nav>
+<ul>
+<li><a href="reports-main.html">Home</a></li>
+<li><a href="business-reports.html">Business Reports</a></li>
+<li><a href="legal-documentation.html">Legal Documentation</a></li>
+<li><a href="funding-solutions.html" class="active">Funding Solutions</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+<div class="breadcrumb-inner">
+<a href="reports-main.html">Home</a> &rsaquo; <span>Funding Solutions</span>
+</div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+<h1>Funding Solutions</h1>
+<p>Complete funding support including bank loans, SIDBI, NBFC loans, and loan syndication services for business growth.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+<!-- Hero image -->
+<img class="content-hero-img reveal"
+     src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1400&q=85&fit=crop"
+     alt="Funding solutions and business financing"
+     loading="lazy">
+
+<!-- Overview with side image -->
+<div class="two-col reveal">
+<div class="content-section" style="margin-bottom:0">
+    <h2>Overview</h2>
+    <p>We provide <strong>comprehensive funding solutions</strong> designed to help businesses secure financing for growth, working capital, and expansion. Our expert team has strong relationships with financial institutions and deep knowledge of various funding schemes and programs.</p>
+    <p>Whether you're a startup looking for seed funding or an established enterprise seeking syndicated loans, we navigate the entire process — from documentation to disbursement — so you can focus on building your business.</p>
+</div>
+<img class="two-col-img"
+     src="https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?w=800&q=80&fit=crop"
+     alt="Financial advisor discussing funding options"
+     loading="lazy">
+</div>
+
+<!-- Stats strip -->
+<div class="stats-strip reveal">
+    <div class="stat-box">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Loans Processed</span>
+    </div>
+    <div class="stat-box">
+        <span class="stat-num">₹50Cr+</span>
+        <span class="stat-label">Funds Facilitated</span>
+    </div>
+    <div class="stat-box">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Lender Relationships</span>
+    </div>
+    <div class="stat-box">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Approval Rate</span>
+    </div>
+</div>
+
+<!-- Funding Solutions Services -->
+<div class="content-section reveal">
+<h2>Funding Solutions Services</h2>
+<div class="services-grid">
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop"
+     alt="SIDBI Loan Assistance" loading="lazy">
+<div class="service-card-body">
+<h3>🏛️ SIDBI Loan Assistance</h3>
+<p>Expert assistance in securing SIDBI loans with favorable terms.</p>
+<ul>
+<li>Scheme identification</li>
+<li>Eligibility assessment</li>
+<li>Documentation preparation</li>
+<li>Application processing</li>
+<li>Relationship management</li>
+<li>Follow-up support</li>
+</ul>
+</div>
+</div>
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=600&q=80&fit=crop"
+     alt="Bank Loans and NBFCs" loading="lazy">
+<div class="service-card-body">
+<h3>🏦 Bank Loans & NBFCs</h3>
+<p>Complete support for securing loans from commercial banks and NBFCs.</p>
+<ul>
+<li>Bank identification</li>
+<li>Loan scheme selection</li>
+<li>Documentation preparation</li>
+<li>Application support</li>
+<li>Negotiations</li>
+<li>Disbursement follow-up</li>
+</ul>
+</div>
+</div>
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop"
+     alt="Loan Syndication Services" loading="lazy">
+<div class="service-card-body">
+<h3>🤝 Loan Syndication Services</h3>
+<p>Specialized support for larger funding requirements through syndication.</p>
+<ul>
+<li>Syndication structuring</li>
+<li>Bank coordination</li>
+<li>Lead arranger support</li>
+<li>Documentation management</li>
+<li>Negotiation support</li>
+<li>Closing assistance</li>
+</ul>
+</div>
+</div>
+
+<div class="service-card">
+<img class="service-card-img"
+     src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop"
+     alt="Funding Documentation" loading="lazy">
+<div class="service-card-body">
+<h3>📝 Funding Documentation</h3>
+<p>Complete preparation of documentation required for funding applications.</p>
+<ul>
+<li>CMA preparation</li>
+<li>Project reports</li>
+<li>Business plans</li>
+<li>Financial projections</li>
+<li>Covenant documentation</li>
+<li>Compliance support</li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Highlight box -->
+<div class="highlight-box reveal">
+<h4>Why Choose Our Funding Solutions?</h4>
+<p>Our funding solutions are backed by years of experience in securing financing for businesses of all sizes.</p>
+<ul>
+<li>Strong lender relationships</li>
+<li>Expert documentation preparation</li>
+<li>Competitive negotiation support</li>
+<li>Quick processing assistance</li>
+<li>Ongoing advisory support</li>
+</ul>
+</div>
+
+<!-- Bottom banner -->
+<img class="bottom-banner reveal"
+     src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=80&fit=crop"
+     alt="Business team celebrating successful funding"
+     loading="lazy">
+
+<div class="nav-buttons reveal">
+<a href="reports-main.html" class="btn btn-secondary">← Back to All Services</a>
+<a href="../contact.html" class="btn btn-primary">Request Funding Solutions →</a>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-content">
+
+<div class="footer-section">
+<h4>Quick Links</h4>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="business-reports.html">Business Reports</a></li>
+<li><a href="legal-documentation.html">Legal Documentation</a></li>
+<li><a href="funding-solutions.html">Funding Solutions</a></li>
+<li><a href="../contact.html">Contact Us</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Legal</h4>
+<ul>
+<li><a href="../terms.html">Terms & Conditions</a></li>
+<li><a href="../privacy-policy.html">Privacy Policy</a></li>
+<li><a href="../disclaimer.html">Disclaimer</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<h4>Services</h4>
+<ul>
+<li><a href="funding-solutions.html">SIDBI</a></li>
+<li><a href="funding-solutions.html">Bank Loans</a></li>
+<li><a href="funding-solutions.html">Syndication</a></li>
+<li><a href="funding-solutions.html">Documentation</a></li>
+</ul>
+</div>
+
+<div class="footer-section">
+<div class="footer-info">
+<strong>Reports & Documentation Services</strong><br>
+Professional Business Solutions<br><br>
+<strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+<strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+</div>
+</div>
+
+</div>
+<div class="footer-bottom">
+<p>&copy; Copyright 2026 Reports & Documentation Services. All Rights Reserved.</p>
+</div>
+</div>
+</footer>
+
+<script>
+    // Sticky header shadow
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Animated stat counters
+    const statNums = document.querySelectorAll('.stat-num');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'none';
+                entry.target.style.opacity = '0';
+                entry.target.style.transform = 'translateY(12px)';
+                setTimeout(() => {
+                    entry.target.style.transition = 'opacity .5s ease, transform .5s ease';
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, 100);
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    statNums.forEach((el, i) => {
+        el.style.transitionDelay = `${i * 120}ms`;
+        statsObserver.observe(el);
+    });
+</script>
+
+</body>
+</html>

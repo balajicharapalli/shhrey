@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Office Services - Shreyas U M & Associates</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background-color:#f5f7fa;color:#333;font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all .3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0d2c54}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav ul li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav ul li a:hover,nav ul li a.active{color:#0066cc;border-bottom-color:#0066cc;background:rgba(0,102,204,.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── HERO ── */
+.hero{
+    position:relative;color:#fff;
+    padding:110px 20px 90px;text-align:center;overflow:hidden;
+    background:linear-gradient(rgba(13,44,84,0.88),rgba(13,44,84,0.93)),
+               url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.06) 0%,transparent 65%);
+    pointer-events:none;
+}
+.hero h2{
+    font-family:'Playfair Display',serif;
+    font-size:52px;margin-bottom:18px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.hero p{
+    font-size:18px;max-width:680px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:auto;padding:60px 20px}
+
+/* ── SECTION HEADINGS ── */
+.section-title{
+    font-family:'Playfair Display',serif;
+    color:#0d2c54;margin-bottom:22px;font-size:30px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;display:block;
+}
+.content-block{margin-bottom:52px}
+.content-block p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+
+/* ── SERVICES GRID ── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;margin-top:30px}
+.service-card{
+    background:#fff;border:1px solid #e0eaf4;border-radius:14px;
+    padding:28px 24px;box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+    cursor:pointer;
+}
+.service-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 14px 32px rgba(13,44,84,.14);
+    border-color:#0d2c54;
+}
+.service-card h3{
+    font-size:18px;color:#0d2c54;margin-bottom:12px;font-weight:700;
+    font-family:'Playfair Display',serif;
+}
+.service-card p{color:#666;font-size:14px;line-height:1.6;margin-bottom:16px}
+.service-card ul{list-style:none;margin:0 0 18px;padding:0}
+.service-card ul li{
+    font-size:13px;color:#555;
+    padding:5px 0 5px 22px;position:relative;
+    border-bottom:1px solid #f0f4f8;
+}
+.service-card ul li:last-child{border-bottom:none}
+.service-card ul li::before{content:'✓';position:absolute;left:0;color:#0066cc;font-weight:700}
+.service-card .card-btn{
+    display:block;width:100%;text-align:center;
+    padding:11px 20px;background:linear-gradient(135deg,#0d2c54,#1a4a7a);
+    color:#fff;border-radius:6px;font-size:13px;font-weight:600;
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.service-card .card-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(13,44,84,.3)}
+
+/* ── WHY CHOOSE ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:28px}
+.why-card{
+    background:#fff;border:1px solid #e0eaf4;border-radius:14px;
+    padding:26px 22px;box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .3s ease,box-shadow .3s ease;
+}
+.why-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(13,44,84,.12)}
+.why-card-icon{font-size:32px;margin-bottom:12px;display:block}
+.why-card h4{font-size:15px;font-weight:700;color:#0d2c54;margin-bottom:8px}
+.why-card p{font-size:13px;color:#666;line-height:1.65;margin:0}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto;margin-top:24px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+table th{background:linear-gradient(135deg,#0d2c54,#1a4a7a);color:#fff;padding:14px 18px;text-align:left;font-size:13.5px;font-weight:600}
+table td{padding:13px 18px;border-bottom:1px solid #e8eef4;font-size:13px;color:#555}
+table tr:last-child td{border-bottom:none}
+table tr:nth-child(even) td{background:#f8faff}
+table tr:hover td{background:#eef4ff;transition:background .2s}
+table td strong{color:#0d2c54}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+    background:linear-gradient(135deg,#e8f0f7,#f0f6ff);
+    border-left:4px solid #0066cc;padding:24px;
+    border-radius:0 12px 12px 0;margin:0 0 18px;
+    transition:box-shadow .3s;
+}
+.highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+.highlight-box h4{color:#0066cc;font-size:15px;margin-bottom:8px;font-weight:700;font-family:'Playfair Display',serif}
+.highlight-box p{color:#555;font-size:14px;line-height:1.7;margin:0}
+
+/* ── FEATURE LIST ── */
+.feature-list{list-style:none;margin:0;padding:0}
+.feature-list li{
+    padding:11px 0 11px 30px;position:relative;
+    color:#555;font-size:14px;line-height:1.75;
+    border-bottom:1px solid #eef2f7;
+}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{content:'✓';position:absolute;left:0;top:11px;color:#0066cc;font-weight:700;font-size:14px}
+
+/* ── CTA ── */
+.cta{
+    position:relative;text-align:center;padding:75px 20px;
+    border-radius:18px;margin:0 0 50px;overflow:hidden;color:#fff;
+    background:linear-gradient(rgba(13,44,84,0.92),rgba(13,44,84,0.96)),
+               url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&fit=crop') center/cover no-repeat;
+}
+.cta::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,0.07) 0%,transparent 60%);
+    pointer-events:none;
+}
+.cta h3{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;margin-bottom:14px}
+.cta p{font-size:16px;opacity:.88;font-weight:300;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto}
+.cta-btn{
+    display:inline-block;padding:14px 38px;
+    background:#f4b400;color:#1a2332;
+    font-size:15px;font-weight:700;border-radius:6px;
+    transition:all .3s ease;box-shadow:0 4px 16px rgba(244,180,0,.35);
+    font-family:'DM Sans',sans-serif;
+}
+.cta-btn:hover{background:#e09e00;transform:translateY(-3px);box-shadow:0 8px 24px rgba(244,180,0,.45);color:#1a2332}
+
+/* ── NAV BUTTONS ── */
+.nav-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:10px 0 50px}
+.btn-back{
+    padding:13px 30px;border-radius:6px;font-weight:600;font-size:14px;
+    border:2px solid #0d2c54;color:#0d2c54;
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.btn-back:hover{background:#0d2c54;color:#fff;transform:translateY(-2px)}
+.btn-contact{
+    padding:13px 30px;border-radius:6px;font-weight:700;font-size:14px;
+    background:linear-gradient(135deg,#0d2c54,#1a4a7a);color:#fff;
+    box-shadow:0 4px 14px rgba(13,44,84,.3);
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.btn-contact:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(13,44,84,.4)}
+
+/* ── WHATSAPP ── */
+.whatsapp-btn{
+    position:fixed;bottom:24px;right:24px;
+    background:#25D366;color:#fff;
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;box-shadow:0 4px 16px rgba(37,211,102,.5);
+    z-index:1000;transition:transform .3s ease,box-shadow .3s ease;
+}
+.whatsapp-btn:hover{transform:scale(1.12);box-shadow:0 8px 24px rgba(37,211,102,.6)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:#fff}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:#fff}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+    .hero h2{font-size:32px}
+    .services-grid{grid-template-columns:1fr}
+    nav ul{flex-direction:column;gap:0}
+    nav ul li a{padding:12px 14px}
+    .cta h3{font-size:26px}
+    table{font-size:12px}
+    table td,table th{padding:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+    <div class="header-top-inner">
+        <div class="header-top-left">
+            <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+            <span>Call +91 91416 35572</span>
+        </div>
+        <div class="header-top-right">
+            <a href="../index.html">Back to Home</a>
+            <a href="../contact.html">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a href="../index.html" class="logo">Shreyas U M & Associates</a>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="backoffice-main.html" class="active">Backoffice</a></li>
+                <li><a href="accounting-services.html">Accounting</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="../index.html">Home</a> &rsaquo;
+        <span>Back Office Services</span>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Back Office Services</h2>
+    <p>Comprehensive back office solutions including accounting, payroll, staffing, and CFO services for business growth.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Welcome -->
+    <div class="content-block reveal">
+        <span class="section-title">Welcome to Back Office Services</span>
+        <p>We provide complete back office solutions designed to streamline your business operations, reduce costs, and improve efficiency. Our expert team handles accounting, payroll, staffing, and financial management so you can focus on core business growth.</p>
+        <p>From routine accounting tasks to strategic CFO services, we deliver comprehensive support across all back office functions.</p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="content-block reveal">
+        <span class="section-title">Our Back Office Services</span>
+        <div class="services-grid">
+            <div class="service-card" onclick="location.href='accounting-services.html'">
+                <h3>📊 Accounting Services</h3>
+                <p>Complete accounting solutions including bookkeeping, financial reporting, and regulatory compliance.</p>
+                <ul>
+                    <li>Bookkeeping &amp; accounts management</li>
+                    <li>Financial statement preparation</li>
+                    <li>GST &amp; tax compliance</li>
+                    <li>Audit support</li>
+                    <li>Financial analysis &amp; reporting</li>
+                </ul>
+                <a href="accounting-services.html" class="card-btn">View Details →</a>
+            </div>
+            <div class="service-card" onclick="location.href='payroll-services.html'">
+                <h3>💰 Payroll Services</h3>
+                <p>Professional payroll management including salary processing, statutory compliance, and employee benefits.</p>
+                <ul>
+                    <li>Salary &amp; wage processing</li>
+                    <li>Statutory compliance (PF, ESI, TDS)</li>
+                    <li>Employee benefits management</li>
+                    <li>Payroll analytics &amp; reports</li>
+                    <li>Statutory filings</li>
+                </ul>
+                <a href="payroll-services.html" class="card-btn">View Details →</a>
+            </div>
+            <div class="service-card" onclick="location.href='staffing-solutions.html'">
+                <h3>👥 Staffing Solutions</h3>
+                <p>Flexible staffing solutions providing qualified professionals for back office and administrative roles.</p>
+                <ul>
+                    <li>Permanent &amp; temporary staffing</li>
+                    <li>Contract staffing support</li>
+                    <li>Recruitment &amp; placement</li>
+                    <li>Staff management &amp; training</li>
+                    <li>Payroll &amp; benefits administration</li>
+                </ul>
+                <a href="staffing-solutions.html" class="card-btn">View Details →</a>
+            </div>
+            <div class="service-card" onclick="location.href='cfo-services.html'">
+                <h3>💼 Part-time CFO Services</h3>
+                <p>Strategic financial management and guidance from experienced CFO professionals on flexible terms.</p>
+                <ul>
+                    <li>Financial strategy &amp; planning</li>
+                    <li>Financial reporting &amp; analysis</li>
+                    <li>Cash flow management</li>
+                    <li>Investor relations support</li>
+                    <li>Strategic business guidance</li>
+                </ul>
+                <a href="cfo-services.html" class="card-btn">View Details →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="content-block reveal">
+        <span class="section-title">Why Choose Our Back Office Services?</span>
+        <div class="why-grid">
+            <div class="why-card">
+                <span class="why-card-icon">🎯</span>
+                <h4>Expert Team</h4>
+                <p>Experienced professionals with expertise in accounting, payroll, HR, and financial management.</p>
+            </div>
+            <div class="why-card">
+                <span class="why-card-icon">💰</span>
+                <h4>Cost Effective</h4>
+                <p>Reduce operational costs while maintaining quality and compliance standards.</p>
+            </div>
+            <div class="why-card">
+                <span class="why-card-icon">📈</span>
+                <h4>Scalable Solutions</h4>
+                <p>Services that grow with your business, from startups to established enterprises.</p>
+            </div>
+            <div class="why-card">
+                <span class="why-card-icon">✅</span>
+                <h4>Regulatory Compliance</h4>
+                <p>Ensure compliance with all statutory and regulatory requirements across all domains.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Comparison Table -->
+    <div class="content-block reveal">
+        <span class="section-title">Service Comparison</span>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Key Features</th>
+                        <th>Timeline</th>
+                        <th>Benefits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Accounting</strong></td>
+                        <td>Bookkeeping, statements, compliance, audit support</td>
+                        <td>Ongoing</td>
+                        <td>Accurate records, tax compliance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payroll</strong></td>
+                        <td>Processing, statutory, benefits, analytics</td>
+                        <td>Monthly/Quarterly</td>
+                        <td>Compliance, timely payments, reports</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staffing</strong></td>
+                        <td>Recruitment, placement, management, training</td>
+                        <td>1–4 weeks</td>
+                        <td>Quality talent, cost savings, flexibility</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Part-time CFO</strong></td>
+                        <td>Strategy, reporting, analysis, guidance</td>
+                        <td>Monthly/Quarterly</td>
+                        <td>Strategic insights, financial control</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Track Record -->
+    <div class="content-block reveal">
+        <span class="section-title">Our Track Record</span>
+        <div class="highlight-box">
+            <h4>500+ Businesses Served</h4>
+            <p>Trusted by businesses across industries for professional back office support.</p>
+        </div>
+        <div class="highlight-box">
+            <h4>98% Client Retention</h4>
+            <p>High satisfaction rate with long-term partnerships and repeat business.</p>
+        </div>
+        <div class="highlight-box">
+            <h4>10+ Years Experience</h4>
+            <p>Extensive experience in back office operations and business support.</p>
+        </div>
+        <div class="highlight-box">
+            <h4>Zero Compliance Issues</h4>
+            <p>Perfect record of regulatory compliance across all services.</p>
+        </div>
+    </div>
+
+    <!-- Quick Information -->
+    <div class="content-block reveal">
+        <span class="section-title">Quick Information</span>
+        <ul class="feature-list">
+            <li><strong>Experienced Team:</strong> Qualified professionals with specialized expertise in back office functions</li>
+            <li><strong>End-to-End Solutions:</strong> Services covering all aspects of back office operations</li>
+            <li><strong>Technology:</strong> Modern tools and systems for efficiency and accuracy</li>
+            <li><strong>Cost Effective:</strong> Competitive pricing with transparent fee structures</li>
+            <li><strong>Scalability:</strong> Services that adapt to your business growth and changing needs</li>
+            <li><strong>Compliance Focus:</strong> Expertise in statutory and regulatory requirements across all services</li>
+        </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta reveal">
+        <h3>Ready to Streamline Your Back Office?</h3>
+        <p>Let our expert team handle your accounting, payroll, staffing, and financial management — so you can focus on growing your business.</p>
+        <a href="../contact.html" class="cta-btn">Book a Free Consultation</a>
+    </div>
+
+    <!-- Nav buttons -->
+    <div class="nav-buttons reveal">
+        <a href="../index.html" class="btn-back">← Back to Home</a>
+        <a href="../contact.html" class="btn-contact">Contact For Guidance →</a>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="backoffice-main.html">Back Office Home</a></li>
+                    <li><a href="accounting-services.html">Accounting</a></li>
+                    <li><a href="payroll-services.html">Payroll</a></li>
+                    <li><a href="staffing-solutions.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="cfo-services.html">CFO Services</a></li>
+                    <li><a href="accounting-services.html">Bookkeeping</a></li>
+                    <li><a href="payroll-services.html">Payroll</a></li>
+                    <li><a href="staffing-solutions.html">Recruitment</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-info">
+                    <strong>Shreyas U M & Associates</strong><br>
+                    Chartered Accountants<br><br>
+                    <strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+                    <strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+                    <strong>📍 Address:</strong> India<br><br>
+                    <strong>🕐 Business Hours:</strong><br>
+                    Monday – Friday: 9:00 AM – 6:00 PM<br>
+                    Saturday: 10:00 AM – 2:00 PM
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shreyas U M & Associates | Chartered Accountants | India. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/919141635572?text=Hi%20I%20need%20CA%20services" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
+
+<script>
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

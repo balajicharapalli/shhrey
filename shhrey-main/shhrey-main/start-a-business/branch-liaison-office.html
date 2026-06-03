@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Branch / Liaison Office - Start A Business - Shreyas U M & Associates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background-color:#f5f7fa;color:#333;font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;transition:all .3s ease}
+
+/* ── HEADER TOP ── */
+.header-top{background:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+.header-top-inner{max-width:1200px;margin:auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.header-top-left{display:flex;gap:15px}
+.header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+.header-top-left a:hover{color:#fff;text-decoration:underline}
+.header-top-right{display:flex;gap:20px}
+.header-top-right a{color:#e8e8e8;font-size:13px}
+.header-top-right a:hover{color:#fff}
+
+/* ── HEADER ── */
+header{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+header.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.13)}
+.header-inner{max-width:1200px;margin:auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+.logo:hover{color:#0d2c54}
+nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+nav ul li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+nav ul li a:hover,nav ul li a.active{color:#0066cc;border-bottom-color:#0066cc;background:rgba(0,102,204,.05)}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{background:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+.breadcrumb-inner{max-width:1200px;margin:auto;font-size:13px;color:#666}
+.breadcrumb-inner a{color:#0066cc}
+
+/* ── HERO ── */
+.hero{
+    position:relative;color:#fff;
+    padding:110px 20px 90px;text-align:center;overflow:hidden;
+    background:linear-gradient(rgba(13,44,84,0.88),rgba(13,44,84,0.93)),
+               url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=85&fit=crop') center/cover no-repeat;
+}
+.hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.06) 0%,transparent 65%);
+    pointer-events:none;
+}
+.hero h2{
+    font-family:'Playfair Display',serif;
+    font-size:52px;margin-bottom:18px;font-weight:800;line-height:1.15;
+    animation:fadeDown .8s ease both;
+}
+.hero p{
+    font-size:18px;max-width:680px;margin:0 auto;opacity:.92;
+    font-weight:300;line-height:1.75;
+    animation:fadeDown .8s .18s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── MAIN ── */
+.main-content{max-width:1200px;margin:auto;padding:60px 20px}
+
+/* ── HERO IMAGE ── */
+.content-hero-img{
+    width:100%;height:400px;object-fit:cover;
+    border-radius:14px;margin-bottom:52px;display:block;
+    box-shadow:0 10px 36px rgba(0,0,0,.13);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.content-hero-img:hover{transform:scale(1.012);box-shadow:0 18px 50px rgba(0,0,0,.18)}
+
+/* ── SECTION HEADINGS ── */
+.section-title{
+    font-family:'Playfair Display',serif;
+    color:#0d2c54;margin-bottom:22px;font-size:30px;font-weight:700;
+    border-bottom:3px solid #0066cc;padding-bottom:14px;display:block;
+}
+.content-block{margin-bottom:52px}
+.content-block p{color:#555;font-size:14px;line-height:1.85;margin-bottom:15px}
+
+/* ── TWO COL ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-bottom:52px;align-items:center}
+.two-col-img{
+    width:100%;height:320px;object-fit:cover;border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.11);display:block;
+    transition:transform .5s ease,box-shadow .5s ease;
+}
+.two-col-img:hover{transform:scale(1.03);box-shadow:0 14px 40px rgba(0,0,0,.17)}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    gap:16px;margin-bottom:52px;
+}
+.photo-strip img{
+    width:100%;height:200px;object-fit:cover;border-radius:12px;
+    box-shadow:0 4px 16px rgba(0,0,0,.1);display:block;
+    transition:transform .4s ease,box-shadow .4s ease;
+}
+.photo-strip img:hover{transform:scale(1.04);box-shadow:0 10px 28px rgba(0,0,0,.16)}
+
+/* ── INFO CARDS ── */
+.info-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:28px}
+.info-card{
+    background:#fff;border:1px solid #e0eaf4;border-radius:14px;
+    padding:26px 22px;box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .35s ease,box-shadow .35s ease,border-color .3s;
+}
+.info-card:hover{transform:translateY(-6px);box-shadow:0 14px 32px rgba(13,44,84,.14);border-color:#0d2c54}
+.info-card-icon{font-size:32px;margin-bottom:14px;display:block}
+.info-card h4{color:#0d2c54;font-size:16px;margin-bottom:10px;font-weight:700}
+.info-card p{color:#666;font-size:13.5px;line-height:1.7;margin:0}
+
+/* ── FEATURE LIST ── */
+.feature-list{list-style:none;margin:0;padding:0}
+.feature-list li{
+    padding:12px 0 12px 32px;position:relative;
+    color:#555;font-size:14px;line-height:1.75;
+    border-bottom:1px solid #eef2f7;
+}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{
+    content:'✓';position:absolute;left:0;top:12px;
+    color:#0066cc;font-weight:700;font-size:15px;
+}
+
+/* ── IMG BAND ── */
+.img-band{
+    width:100%;height:300px;object-fit:cover;
+    border-radius:14px;margin:0 0 52px;display:block;
+    box-shadow:0 8px 28px rgba(0,0,0,.12);
+    transition:transform .6s ease,box-shadow .6s ease;
+}
+.img-band:hover{transform:scale(1.012);box-shadow:0 16px 44px rgba(0,0,0,.17)}
+
+/* ── PROCESS STEPS ── */
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:28px}
+.step{
+    background:#fff;padding:26px 22px;
+    border-left:4px solid #0d2c54;border-radius:0 12px 12px 0;
+    box-shadow:0 4px 16px rgba(0,0,0,.07);
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s;
+}
+.step:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(13,44,84,.14);border-color:#0066cc}
+.step-num{
+    width:38px;height:38px;background:linear-gradient(135deg,#0d2c54,#1a4a7a);
+    color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:16px;font-weight:700;margin-bottom:12px;
+    box-shadow:0 4px 12px rgba(13,44,84,.28);
+}
+.step h4{font-size:14px;font-weight:700;color:#0d2c54;margin-bottom:6px}
+.step p{font-size:12.5px;color:#666;margin:0;line-height:1.6}
+
+/* ── TABLE ── */
+.table-wrap{overflow-x:auto;margin-top:24px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+table{width:100%;border-collapse:collapse;min-width:500px}
+table th{background:linear-gradient(135deg,#0d2c54,#1a4a7a);color:#fff;padding:14px 18px;text-align:left;font-size:13.5px;font-weight:600}
+table th:first-child{border-radius:0}
+table td{padding:13px 18px;border-bottom:1px solid #e8eef4;font-size:13px;color:#555}
+table tr:last-child td{border-bottom:none}
+table tr:nth-child(even) td{background:#f8faff}
+table tr:hover td{background:#eef4ff;transition:background .2s}
+table td strong{color:#0d2c54}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box{
+    background:linear-gradient(135deg,#e8f0f7,#f0f6ff);
+    border-left:4px solid #0066cc;padding:24px;
+    border-radius:0 12px 12px 0;margin:0 0 52px;
+    transition:box-shadow .3s;
+}
+.highlight-box:hover{box-shadow:0 6px 22px rgba(0,102,204,.12)}
+.highlight-box h4{color:#0066cc;font-size:16px;margin-bottom:10px;font-weight:700;font-family:'Playfair Display',serif}
+.highlight-box p{color:#555;font-size:14px;line-height:1.75;margin:0}
+
+/* ── DOCS LIST ── */
+.docs-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.docs-list li{
+    padding:11px 0 11px 30px;position:relative;
+    color:#555;font-size:13.5px;line-height:1.7;
+    border-bottom:1px solid #eef2f7;
+}
+.docs-list li::before{
+    content:'📄';position:absolute;left:0;top:11px;font-size:13px;
+}
+
+/* ── NAV BUTTONS ── */
+.nav-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:10px 0 50px}
+.btn-back{
+    padding:13px 30px;border-radius:6px;font-weight:600;font-size:14px;
+    border:2px solid #0d2c54;color:#0d2c54;
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.btn-back:hover{background:#0d2c54;color:#fff;transform:translateY(-2px)}
+.btn-contact{
+    padding:13px 30px;border-radius:6px;font-weight:700;font-size:14px;
+    background:linear-gradient(135deg,#0d2c54,#1a4a7a);color:#fff;
+    box-shadow:0 4px 14px rgba(13,44,84,.3);
+    transition:all .3s;font-family:'DM Sans',sans-serif;
+}
+.btn-contact:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(13,44,84,.4)}
+
+/* ── CTA ── */
+.cta{
+    position:relative;text-align:center;padding:75px 20px;
+    border-radius:18px;margin:0 0 50px;overflow:hidden;color:#fff;
+    background:linear-gradient(rgba(13,44,84,0.92),rgba(13,44,84,0.96)),
+               url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80&fit=crop') center/cover no-repeat;
+}
+.cta::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,0.07) 0%,transparent 60%);
+    pointer-events:none;
+}
+.cta h3{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;margin-bottom:14px}
+.cta p{font-size:16px;opacity:.88;font-weight:300;margin-bottom:28px;max-width:580px;margin-left:auto;margin-right:auto}
+.cta-btn{
+    display:inline-block;padding:14px 38px;
+    background:#f4b400;color:#1a2332;
+    font-size:15px;font-weight:700;border-radius:6px;
+    transition:all .3s ease;box-shadow:0 4px 16px rgba(244,180,0,.35);
+    font-family:'DM Sans',sans-serif;
+}
+.cta-btn:hover{background:#e09e00;transform:translateY(-3px);box-shadow:0 8px 24px rgba(244,180,0,.45);color:#1a2332}
+
+/* ── WHATSAPP ── */
+.whatsapp-btn{
+    position:fixed;bottom:24px;right:24px;
+    background:#25D366;color:#fff;
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;box-shadow:0 4px 16px rgba(37,211,102,.5);
+    z-index:1000;transition:transform .3s ease,box-shadow .3s ease;
+}
+.whatsapp-btn:hover{transform:scale(1.12);box-shadow:0 8px 24px rgba(37,211,102,.6)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── FOOTER ── */
+.footer{background:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+.footer-inner{max-width:1200px;margin:auto}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+.footer-section ul{list-style:none}
+.footer-section li{margin-bottom:8px}
+.footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+.footer-section a:hover{color:#fff}
+.footer-info{color:#bbb;font-size:12px;line-height:1.9}
+.footer-info strong{color:#fff}
+.footer-info a{color:#7ab3f5}
+.footer-info a:hover{color:#fff}
+.footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+    .hero h2{font-size:32px}
+    .two-col{grid-template-columns:1fr}
+    .content-hero-img,.img-band{height:220px}
+    .photo-strip{grid-template-columns:1fr}
+    .docs-list{grid-template-columns:1fr}
+    nav ul{flex-direction:column;gap:0}
+    nav ul li a{padding:12px 14px}
+    .cta h3{font-size:26px}
+}
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     FILE LOCATION: start-a-business/branch-liaison-office.html
+     Root links use ../   |   Same-folder: no prefix
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- HEADER TOP -->
+<div class="header-top">
+    <div class="header-top-inner">
+        <div class="header-top-left">
+            <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a>
+            <span>Call +91 91416 35572</span>
+        </div>
+        <div class="header-top-right">
+            <a href="../index.html">Back to Home</a>
+            <a href="../contact.html">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a href="../index.html" class="logo">Shreyas U M & Associates</a>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="start-business-main.html" class="active">Start A Business</a></li>
+                <li><a href="../Registrations/income-tax-main.html">Tax Services</a></li>
+                <li><a href="../nri-services.html">NRI Services</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="../index.html">Home</a> &rsaquo;
+        <a href="start-business-main.html">Start A Business</a> &rsaquo;
+        <span>Branch / Liaison Office</span>
+    </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h2>Branch / Liaison Office</h2>
+    <p>Expand your foreign business presence into India through a Branch or Liaison Office — the most streamlined entry route for overseas companies.</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Hero image -->
+    <img class="content-hero-img reveal"
+         src="https://images.unsplash.com/photo-1464938050520-ef2270bb8ce8?w=1400&q=85&fit=crop"
+         alt="Global business office — Branch and Liaison Office setup in India"
+         loading="lazy">
+
+    <!-- Overview — two col -->
+    <div class="two-col reveal">
+        <div class="content-block" style="margin-bottom:0">
+            <span class="section-title">Overview</span>
+            <p>Foreign companies looking to establish a presence in India without incorporating a full subsidiary can opt for a <strong>Branch Office</strong> or <strong>Liaison Office</strong>. Both are set up under the Foreign Exchange Management Act (FEMA) and require prior approval from the Reserve Bank of India (RBI).</p>
+            <p>A <strong>Branch Office</strong> can conduct business activities and earn revenue in India, while a <strong>Liaison Office</strong> acts only as a communication channel and cannot earn income locally.</p>
+        </div>
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&fit=crop"
+             alt="International business meeting"
+             loading="lazy">
+    </div>
+
+    <!-- Photo strip -->
+    <div class="photo-strip reveal">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80&fit=crop"
+             alt="Global business advisory" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop"
+             alt="Corporate office India" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop"
+             alt="RBI FEMA compliance" loading="lazy">
+    </div>
+
+    <!-- Branch vs Liaison vs Project — info cards -->
+    <div class="content-block reveal">
+        <span class="section-title">Branch Office vs Liaison Office</span>
+        <div class="info-cards">
+            <div class="info-card">
+                <span class="info-card-icon">🏢</span>
+                <h4>Branch Office</h4>
+                <p>Can carry out business activities, generate revenue, and enter into contracts in India. Taxed as a foreign company. Ideal for trading, professional services, and manufacturing support.</p>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">🔗</span>
+                <h4>Liaison Office</h4>
+                <p>Acts only as a representative of the parent company. Cannot generate income or undertake business activities. Expenses funded entirely from abroad. Suitable for market research and promotion.</p>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">🏗️</span>
+                <h4>Project Office</h4>
+                <p>Temporary office to execute a specific project in India. Permitted only when a foreign company has a contract with an Indian company to execute a project in India.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features — two col -->
+    <div class="two-col reveal">
+        <div class="content-block" style="margin-bottom:0">
+            <span class="section-title">Key Features</span>
+            <ul class="feature-list">
+                <li>Foreign company can maintain 100% ownership — no Indian partner required</li>
+                <li>Simpler and faster entry compared to subsidiary incorporation</li>
+                <li>Branch Office can repatriate profits to the parent company</li>
+                <li>Liaison Office expenses met entirely through inward remittances</li>
+                <li>Both require RBI and in some cases FIPB approval</li>
+                <li>Annual compliance filings with RBI and ROC mandatory</li>
+                <li>No minimum capital requirement for Liaison Office</li>
+                <li>Permitted activities clearly defined by RBI approval letter</li>
+            </ul>
+        </div>
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1530538987395-032d1800fdd4?w=700&q=80&fit=crop"
+             alt="International company India expansion"
+             loading="lazy">
+    </div>
+
+    <!-- Highlight -->
+    <div class="highlight-box reveal">
+        <h4>Best Suited For</h4>
+        <p>Foreign companies wanting to explore or establish business in India — whether for market research, representation, trade, or project execution — without the complexity of full subsidiary incorporation.</p>
+    </div>
+
+    <!-- Mid-page image band -->
+    <img class="img-band reveal"
+         src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1400&q=80&fit=crop"
+         alt="Global business expansion into India"
+         loading="lazy">
+
+    <!-- Requirements — two col list -->
+    <div class="two-col reveal">
+        <img class="two-col-img"
+             src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop"
+             alt="Document preparation for RBI approval"
+             loading="lazy">
+        <div class="content-block" style="margin-bottom:0">
+            <span class="section-title">Requirements & Documentation</span>
+            <ul class="feature-list">
+                <li>Certificate of Incorporation of parent company (notarised & apostilled)</li>
+                <li>Memorandum & Articles of Association of parent company</li>
+                <li>Latest audited financial statements of parent company</li>
+                <li>Board resolution for setting up office in India</li>
+                <li>Details of proposed activities in India</li>
+                <li>Proof of registered office address in India</li>
+                <li>KYC documents of authorised representative</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Setup Process -->
+    <div class="content-block reveal">
+        <span class="section-title">Setup Process</span>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Document Preparation</h4>
+                <p>Gather and apostille all required parent company documents.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>RBI Application</h4>
+                <p>File Form FNC with RBI through an Authorised Dealer bank for approval.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>RBI Approval</h4>
+                <p>Receive Unique Identification Number (UIN) from RBI upon approval.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>ROC Registration</h4>
+                <p>Register the office with the Registrar of Companies within 30 days.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">5</div>
+                <h4>PAN & Bank Account</h4>
+                <p>Obtain PAN and open a designated bank account in India.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">6</div>
+                <h4>Ongoing Compliance</h4>
+                <p>Annual Activity Certificate (AAC) filing and ROC annual return.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline & Cost Table -->
+    <div class="content-block reveal">
+        <span class="section-title">Estimated Timeline & Cost</span>
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>Activity</th>
+                    <th>Timeline</th>
+                    <th>Approx. Cost</th>
+                </tr>
+                <tr>
+                    <td>Document Apostille & Preparation</td>
+                    <td>1–2 weeks</td>
+                    <td>₹5,000 – ₹10,000</td>
+                </tr>
+                <tr>
+                    <td>RBI Approval (Form FNC)</td>
+                    <td>4–8 weeks</td>
+                    <td>Bank charges apply</td>
+                </tr>
+                <tr>
+                    <td>ROC Registration</td>
+                    <td>1–2 weeks</td>
+                    <td>₹3,000 – ₹5,000</td>
+                </tr>
+                <tr>
+                    <td>PAN & Bank Account</td>
+                    <td>1 week</td>
+                    <td>Minimal</td>
+                </tr>
+                <tr>
+                    <td><strong>Total Estimated Time</strong></td>
+                    <td><strong>6–12 weeks</strong></td>
+                    <td><strong>₹15,000 – ₹25,000+</strong></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta reveal">
+        <h3>Ready to Enter the Indian Market?</h3>
+        <p>Let our experts guide you through the RBI approval process, documentation, and ongoing compliance for your Branch or Liaison Office in India.</p>
+        <a href="../contact.html" class="cta-btn">Chat with CA</a>
+    </div>
+
+    <!-- Nav buttons -->
+    <div class="nav-buttons reveal">
+        <a href="start-business-main.html" class="btn-back">← Back to Start A Business</a>
+        <a href="../contact.html" class="btn-contact">Contact For Guidance →</a>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+
+            <div class="footer-section">
+                <h4>Start A Business</h4>
+                <ul>
+                    <li><a href="association-of-persons.html">Association of Persons</a></li>
+                    <li><a href="branch-liaison-office.html">Branch / Liaison Office</a></li>
+                    <li><a href="limited-liability-partnership.html">LLP Registration</a></li>
+                    <li><a href="one-person-company.html">One Person Company</a></li>
+                    <li><a href="partnership-firms.html">Partnership Firms</a></li>
+                    <li><a href="private-limited-company.html">Private Limited Company</a></li>
+                    <li><a href="proprietary-concern.html">Proprietary Concern</a></li>
+                    <li><a href="section-8-company.html">Section 8 Company</a></li>
+                    <li><a href="subsidiary-company.html">Subsidiary Company</a></li>
+                    <li><a href="trusts-and-societies.html">Trusts and Societies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="start-business-main.html">Start A Business</a></li>
+                    <li><a href="../Registrations/income-tax-main.html">Tax Services</a></li>
+                    <li><a href="../Compliance/audit-compliance-main.html">Compliance</a></li>
+                    <li><a href="../nri-services.html">NRI Services</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../Compliance/audit-compliance-main.html">Audit & Assurance</a></li>
+                    <li><a href="../Registrations/income-tax-main.html">Income Tax</a></li>
+                    <li><a href="../Registrations/gst-main.html">GST Services</a></li>
+                    <li><a href="../nri-services.html">NRI Services</a></li>
+                    <li><a href="../Backoffice/backoffice-main.html">Backoffice Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <div class="footer-info">
+                    <strong>Shreyas U M & Associates</strong><br>
+                    Chartered Accountants<br><br>
+                    <strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+                    <strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Shreyas U M & Associates | Chartered Accountants | India. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/919141635572?text=Hi%20I%20need%20CA%20services" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">💬</a>
+
+<script>
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 90);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

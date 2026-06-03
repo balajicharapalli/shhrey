@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Shreyas U M & Associates</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'DM Sans',sans-serif;color:#333;background-color:#fff;overflow-x:hidden}
+        a{text-decoration:none;transition:all .3s ease}
+
+        /* ── HEADER TOP ── */
+        .header-top{background-color:#1a2332;color:#fff;padding:10px 0;font-size:13px}
+        .header-top-inner{max-width:1200px;margin:0 auto;padding:8px 20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+        .header-top-left{display:flex;gap:15px}
+        .header-top-left a,.header-top-left span{color:#e8e8e8;font-size:13px}
+        .header-top-left a:hover{color:#fff;text-decoration:underline}
+        .header-top-right{display:flex;gap:20px}
+        .header-top-right a{color:#e8e8e8;font-size:13px}
+
+        /* ── HEADER ── */
+        header{background-color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+        header.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.13)}
+        .header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+        .logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1a2332}
+        .logo:hover{color:#0066cc}
+        nav ul{list-style:none;display:flex;gap:5px;flex-wrap:wrap}
+        nav li a{display:block;padding:15px 14px;color:#333;font-size:14px;font-weight:500;border-bottom:3px solid transparent;transition:all .3s}
+        nav li a:hover,nav li a.active{color:#0066cc;border-bottom-color:#0066cc;background-color:rgba(0,102,204,.05)}
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb{background-color:#f5f5f5;padding:15px 20px;border-bottom:1px solid #ddd}
+        .breadcrumb-inner{max-width:1200px;margin:0 auto;font-size:13px;color:#666}
+        .breadcrumb-inner a{color:#0066cc}
+
+        /* ── PAGE HEADER ── */
+        .page-header{
+            position:relative;color:#fff;
+            padding:90px 20px 75px;text-align:center;overflow:hidden;
+            background:linear-gradient(135deg,rgba(0,82,163,0.92) 0%,rgba(0,50,110,0.95) 100%),
+                       url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=85&fit=crop') center/cover no-repeat;
+        }
+        .page-header::before{
+            content:'';position:absolute;inset:0;
+            background:radial-gradient(ellipse at 60% 40%,rgba(255,255,255,0.07) 0%,transparent 70%);
+            pointer-events:none;
+        }
+        .page-header-badge{
+            display:inline-block;margin-bottom:16px;
+            padding:6px 18px;border-radius:20px;
+            background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+            font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+            color:rgba(255,255,255,0.9);
+            animation:fadeDown .8s ease both;
+        }
+        .page-header h1{
+            font-family:'Playfair Display',serif;
+            font-size:46px;margin-bottom:16px;font-weight:800;
+            line-height:1.15;letter-spacing:-0.5px;
+            animation:fadeDown .8s ease both;
+        }
+        .page-header p{
+            font-size:15px;max-width:580px;margin:0 auto;opacity:.88;
+            font-weight:300;line-height:1.75;
+            animation:fadeDown .8s .2s ease both;
+        }
+        .page-header-meta{
+            margin-top:20px;font-size:12.5px;
+            color:rgba(255,255,255,.65);
+            animation:fadeDown .8s .3s ease both;
+        }
+        @keyframes fadeDown{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+        /* ── LAYOUT ── */
+        .page-wrapper{max-width:1200px;margin:0 auto;padding:60px 20px;display:grid;grid-template-columns:260px 1fr;gap:50px;align-items:start}
+
+        /* ── SIDEBAR TOC ── */
+        .toc{
+            position:sticky;top:90px;
+            background:#f8faff;border:1px solid #d0e4ff;
+            border-radius:14px;padding:24px 20px;
+        }
+        .toc h4{
+            font-family:'Playfair Display',serif;
+            font-size:15px;color:#1a2332;font-weight:700;
+            margin-bottom:16px;padding-bottom:12px;
+            border-bottom:2px solid #0066cc;
+        }
+        .toc ul{list-style:none}
+        .toc li{margin-bottom:4px}
+        .toc a{
+            display:block;padding:7px 10px;
+            font-size:12.5px;color:#555;border-radius:6px;
+            border-left:3px solid transparent;
+            transition:all .25s ease;font-weight:500;
+        }
+        .toc a:hover{
+            color:#0066cc;background:#e8f0f7;
+            border-left-color:#0066cc;padding-left:14px;
+        }
+        .toc-updated{
+            margin-top:18px;padding-top:14px;border-top:1px solid #d0e4ff;
+            font-size:11.5px;color:#888;line-height:1.6;
+        }
+        .toc-updated strong{color:#1a2332}
+
+        /* ── POLICY CONTENT ── */
+        .policy-section{
+            margin-bottom:44px;
+            opacity:0;transform:translateY(24px);
+            transition:opacity .6s ease,transform .6s ease;
+        }
+        .policy-section.visible{opacity:1;transform:translateY(0)}
+
+        .section-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+        .section-num{
+            width:36px;height:36px;flex-shrink:0;
+            background:linear-gradient(135deg,#0066cc,#004999);
+            color:#fff;border-radius:8px;
+            display:flex;align-items:center;justify-content:center;
+            font-size:13px;font-weight:700;
+            box-shadow:0 3px 10px rgba(0,102,204,.25);
+        }
+        .policy-section h2{
+            font-family:'Playfair Display',serif;
+            font-size:22px;color:#1a2332;font-weight:700;
+        }
+
+        .policy-section p{color:#555;font-size:14px;line-height:1.9;margin-bottom:14px}
+        .policy-section ul{margin-left:0;margin-bottom:14px;list-style:none}
+        .policy-section ul li{
+            color:#555;font-size:14px;line-height:1.85;
+            margin-bottom:10px;padding-left:22px;position:relative;
+        }
+        .policy-section ul li::before{
+            content:"›";position:absolute;left:0;
+            color:#0066cc;font-weight:700;font-size:16px;top:0;
+        }
+        .policy-section h3{
+            font-size:15px;font-weight:700;color:#1a2332;
+            margin:20px 0 10px;
+        }
+
+        /* ── INFO BOXES ── */
+        .info-box{
+            background:linear-gradient(135deg,#e8f0f7,#f0f6ff);
+            border-left:4px solid #0066cc;
+            border-radius:0 10px 10px 0;
+            padding:18px 20px;margin:18px 0;
+            font-size:13.5px;color:#444;line-height:1.8;
+        }
+        .info-box strong{color:#0066cc}
+
+        .warning-box{
+            background:#fff8e6;border-left:4px solid #e8900a;
+            border-radius:0 10px 10px 0;
+            padding:18px 20px;margin:18px 0;
+            font-size:13.5px;color:#555;line-height:1.8;
+        }
+        .warning-box strong{color:#b8620a}
+
+        /* ── DATA TABLE ── */
+        .data-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+        .data-table th{
+            background:#1a2332;color:#fff;
+            padding:12px 16px;text-align:left;font-weight:600;font-size:12.5px;
+        }
+        .data-table th:first-child{border-radius:8px 0 0 0}
+        .data-table th:last-child{border-radius:0 8px 0 0}
+        .data-table td{padding:11px 16px;border-bottom:1px solid #ebebeb;color:#555;vertical-align:top;line-height:1.6}
+        .data-table tr:last-child td{border-bottom:none}
+        .data-table tr:hover td{background:#f8faff}
+
+        /* ── DIVIDER ── */
+        .section-divider{border:none;border-top:1px solid #e8e8e8;margin:10px 0 44px}
+
+        /* ── CONTACT CARD ── */
+        .contact-card{
+            background:#1a2332;border-radius:14px;padding:28px 30px;
+            margin-top:30px;
+        }
+        .contact-card h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:700;margin-bottom:12px}
+        .contact-card p{color:rgba(255,255,255,.72);font-size:13.5px;line-height:1.75;margin-bottom:14px}
+        .contact-card a{color:#7ab3f5;font-size:13.5px}
+        .contact-card a:hover{color:#fff}
+        .contact-card .contact-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;font-size:13.5px;color:rgba(255,255,255,.8)}
+        .contact-card .contact-row strong{color:#fff}
+
+        /* ── CTA STRIP ── */
+        .cta-strip{
+            background:linear-gradient(135deg,rgba(0,82,163,0.93),rgba(0,50,110,0.96));
+            border-radius:14px;padding:36px 40px;text-align:center;
+            margin-top:50px;color:#fff;
+        }
+        .cta-strip h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:10px}
+        .cta-strip p{font-size:14px;color:rgba(255,255,255,.82);margin-bottom:22px;font-weight:300}
+        .cta-strip a{
+            display:inline-block;padding:11px 30px;background:#fff;color:#0066cc;
+            border-radius:6px;font-weight:700;font-size:13.5px;
+            transition:all .3s ease;
+        }
+        .cta-strip a:hover{background:#e8f0f7;transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.15)}
+
+        /* ── FOOTER ── */
+        .footer{background-color:#1a2332;color:#bbb;padding:40px 20px 15px;margin-top:50px}
+        .footer-inner{max-width:1200px;margin:0 auto}
+        .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-bottom:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+        .footer-section h4{color:#fff;font-size:14px;margin-bottom:15px;font-weight:600}
+        .footer-section ul{list-style:none}
+        .footer-section li{margin-bottom:8px}
+        .footer-section a{color:#bbb;font-size:12px;transition:color .3s}
+        .footer-section a:hover{color:#fff}
+        .footer-info{color:#bbb;font-size:12px;line-height:1.9}
+        .footer-info strong{color:#fff}
+        .footer-info a{color:#7ab3f5}
+        .footer-info a:hover{color:#fff}
+        .footer-bottom{text-align:center;padding:20px 0 10px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#999}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:900px){
+            .page-wrapper{grid-template-columns:1fr}
+            .toc{position:static;margin-bottom:10px}
+        }
+        @media(max-width:768px){
+            .page-header h1{font-size:32px}
+            nav ul{flex-direction:column;gap:0}
+            .cta-strip{padding:28px 22px}
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER TOP -->
+<div class="header-top">
+    <div class="header-top-inner">
+        <div class="header-top-left">
+            <a href="mailto:info@shreyasum.com">info@shreyasum.com</a>
+            <span>Call +91 91416 35572</span>
+        </div>
+        <div class="header-top-right">
+            <a href="../index.html">Back to Home</a>
+            <a href="../contact.html">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+    <div class="header-inner">
+        <a href="../index.html" class="logo">Shreyas U M & Associates</a>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../start-business-main.html">Start A Business</a></li>
+                <li><a href="../Registrations/income-tax-main.html">Registrations</a></li>
+                <li><a href="../nri-services.html">NRI Services</a></li>
+                <li><a href="../Compliance/audit-compliance-main.html">Compliance</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="../index.html">Home</a> &rsaquo; Privacy Policy
+    </div>
+</div>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="page-header-badge">Legal Document</div>
+    <h1>Privacy Policy</h1>
+    <p>How we collect, use, protect, and handle your personal and financial information.</p>
+    <div class="page-header-meta">Last Updated: March 2026 &nbsp;|&nbsp; Effective Date: January 2024</div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="page-wrapper">
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc">
+        <h4>📋 Contents</h4>
+        <ul>
+            <li><a href="#s1">1. About This Policy</a></li>
+            <li><a href="#s2">2. Information We Collect</a></li>
+            <li><a href="#s3">3. How We Use Your Information</a></li>
+            <li><a href="#s4">4. Professional Confidentiality</a></li>
+            <li><a href="#s5">5. Sharing of Information</a></li>
+            <li><a href="#s6">6. Data Retention</a></li>
+            <li><a href="#s7">7. Data Security</a></li>
+            <li><a href="#s8">8. Your Rights</a></li>
+            <li><a href="#s9">9. Cookies & Website</a></li>
+            <li><a href="#s10">10. Third-Party Links</a></li>
+            <li><a href="#s11">11. Changes to Policy</a></li>
+            <li><a href="#s12">12. Contact Us</a></li>
+        </ul>
+        <div class="toc-updated">
+            <strong>Governed by:</strong><br>
+            Information Technology Act, 2000<br>
+            IT (Amendment) Act, 2008<br>
+            ICAI Code of Ethics<br>
+            DPDP Act, 2023
+        </div>
+    </aside>
+
+    <!-- POLICY SECTIONS -->
+    <main class="policy-content">
+
+        <div class="info-box">
+            <strong>Important:</strong> Shreyas U M & Associates is a firm of Chartered Accountants registered with the Institute of Chartered Accountants of India (ICAI). This Privacy Policy governs the collection and use of personal and financial information provided to us through our website, client engagements, and professional services.
+        </div>
+
+        <!-- Section 1 -->
+        <div class="policy-section" id="s1">
+            <div class="section-header">
+                <div class="section-num">1</div>
+                <h2>About This Policy</h2>
+            </div>
+            <p>This Privacy Policy explains how Shreyas U M & Associates ("we," "our," or "the Firm") collects, uses, discloses, and protects information that you provide when you visit our website, contact us, or engage us for professional services including audit, taxation, advisory, compliance, business registration, and related financial services.</p>
+            <p>By using our website or engaging our services, you consent to the practices described in this policy. If you do not agree with any part of this policy, please discontinue use of our website and services.</p>
+            <p>This policy applies to all clients, prospective clients, website visitors, and third parties who interact with us in connection with our services.</p>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 2 -->
+        <div class="policy-section" id="s2">
+            <div class="section-header">
+                <div class="section-num">2</div>
+                <h2>Information We Collect</h2>
+            </div>
+            <p>We collect information necessary to provide accurate, compliant, and effective professional services. The types of information we may collect include:</p>
+
+            <h3>Personal Identification Information</h3>
+            <ul>
+                <li>Full name, date of birth, and contact details (phone, email, address)</li>
+                <li>PAN (Permanent Account Number), Aadhaar number, and passport details</li>
+                <li>Director Identification Number (DIN), DSC details, and GSTIN</li>
+                <li>Bank account details and financial institution information</li>
+            </ul>
+
+            <h3>Financial & Business Information</h3>
+            <ul>
+                <li>Income details, salary slips, Form 16, and investment statements</li>
+                <li>Business financial statements, balance sheets, and profit & loss accounts</li>
+                <li>Tax returns, assessment orders, and notices from tax authorities</li>
+                <li>Property documents, share certificates, and investment records</li>
+                <li>Foreign income, foreign assets, and overseas bank accounts (for NRI clients)</li>
+            </ul>
+
+            <h3>Website & Communication Information</h3>
+            <ul>
+                <li>Name and email address submitted through contact or enquiry forms</li>
+                <li>IP address, browser type, and pages visited on our website</li>
+                <li>Correspondence via email, phone calls, and in-person meetings</li>
+            </ul>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Examples</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Identity Data</td>
+                        <td>PAN, Aadhaar, DIN, Passport</td>
+                        <td>KYC verification, filings, registrations</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Data</td>
+                        <td>ITR, GST returns, balance sheets</td>
+                        <td>Tax planning, audit, compliance</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Data</td>
+                        <td>Email, phone, address</td>
+                        <td>Client communication and service delivery</td>
+                    </tr>
+                    <tr>
+                        <td>Technical Data</td>
+                        <td>IP address, cookies, browser</td>
+                        <td>Website analytics and security</td>
+                    </tr>
+                    <tr>
+                        <td>NRI-Specific Data</td>
+                        <td>Foreign income, FEMA declarations</td>
+                        <td>NRI tax and FEMA compliance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 3 -->
+        <div class="policy-section" id="s3">
+            <div class="section-header">
+                <div class="section-num">3</div>
+                <h2>How We Use Your Information</h2>
+            </div>
+            <p>We use your information solely for the purpose of delivering our professional services and fulfilling legal obligations. We do not use your information for marketing, profiling, or any purpose unrelated to your engagement with us.</p>
+            <ul>
+                <li>Preparation and filing of income tax returns, GST returns, and other statutory filings</li>
+                <li>Conducting statutory audits, internal audits, and forensic examinations</li>
+                <li>Business registration, incorporation, and compliance with MCA, ROC, and SEBI requirements</li>
+                <li>Business valuation, due diligence, and financial advisory services</li>
+                <li>FEMA compliance, NRI taxation, and repatriation assistance</li>
+                <li>Responding to enquiries and communicating regarding your engagement</li>
+                <li>Complying with legal, regulatory, and professional obligations under ICAI guidelines</li>
+                <li>Maintaining our records as required by law and professional standards</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 4 -->
+        <div class="policy-section" id="s4">
+            <div class="section-header">
+                <div class="section-num">4</div>
+                <h2>Professional Confidentiality</h2>
+            </div>
+            <p>As Chartered Accountants, we are bound by the Code of Ethics issued by the Institute of Chartered Accountants of India (ICAI). This code imposes a strict duty of professional confidentiality on every member of the Firm.</p>
+
+            <div class="info-box">
+                <strong>ICAI Confidentiality Obligation:</strong> Under Clause 1 of Part I of the First Schedule to the Chartered Accountants Act, 1949, and the ICAI Code of Ethics, every Chartered Accountant is duty-bound to maintain the confidentiality of client information acquired during professional engagements, and to not disclose such information to any third party without proper and specific authority, unless there is a legal or professional right or duty to disclose.
+            </div>
+
+            <p>This professional obligation of confidentiality exists independently of this Privacy Policy and provides you with an additional layer of legal protection beyond standard data protection law. All partners, staff, and associates of this Firm are bound by this obligation.</p>
+
+            <h3>What Confidentiality Covers</h3>
+            <ul>
+                <li>All financial information, documents, and records shared with us</li>
+                <li>Business strategies, financial positions, and internal matters</li>
+                <li>Legal disputes, tax assessments, and regulatory proceedings</li>
+                <li>Personal financial affairs and family financial matters</li>
+                <li>Information about your company's directors, shareholders, and operations</li>
+            </ul>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 5 -->
+        <div class="policy-section" id="s5">
+            <div class="section-header">
+                <div class="section-num">5</div>
+                <h2>Sharing of Information</h2>
+            </div>
+            <p>We do not sell, rent, or trade your personal or financial information to any third party. We share your information only in the following limited and necessary circumstances:</p>
+
+            <h3>Statutory & Regulatory Authorities</h3>
+            <ul>
+                <li>Income Tax Department — for filing returns, responding to notices, and assessments</li>
+                <li>GST Council and GST Network (GSTN) — for GST registration and return filing</li>
+                <li>Ministry of Corporate Affairs (MCA) and Registrar of Companies (ROC)</li>
+                <li>Reserve Bank of India (RBI) — for FEMA filings and foreign exchange matters</li>
+                <li>Securities and Exchange Board of India (SEBI) — where applicable</li>
+                <li>Any other authority where disclosure is required by law or court order</li>
+            </ul>
+
+            <h3>Professional Service Providers</h3>
+            <ul>
+                <li>Co-auditors or joint auditors where professional standards require</li>
+                <li>Legal counsel, advocates, or consultants engaged to assist your matter</li>
+                <li>Technology providers for secure document management (under strict NDA)</li>
+            </ul>
+
+            <div class="warning-box">
+                <strong>Note:</strong> Any sharing with professional service providers is done only with your knowledge and under binding confidentiality agreements. We never share your information for commercial, advertising, or marketing purposes.
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 6 -->
+        <div class="policy-section" id="s6">
+            <div class="section-header">
+                <div class="section-num">6</div>
+                <h2>Data Retention</h2>
+            </div>
+            <p>We retain your information for as long as is necessary to fulfil the purpose for which it was collected, and as required by applicable law and professional standards.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Type of Record</th>
+                        <th>Retention Period</th>
+                        <th>Basis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Income tax documents & returns</td>
+                        <td>8 years from relevant assessment year</td>
+                        <td>Income Tax Act, 1961</td>
+                    </tr>
+                    <tr>
+                        <td>GST records and returns</td>
+                        <td>6 years from due date of annual return</td>
+                        <td>CGST Act, 2017</td>
+                    </tr>
+                    <tr>
+                        <td>Audit working papers</td>
+                        <td>7 years from date of audit report</td>
+                        <td>ICAI Standards on Auditing</td>
+                    </tr>
+                    <tr>
+                        <td>Company registration documents</td>
+                        <td>Duration of engagement + 8 years</td>
+                        <td>Companies Act, 2013</td>
+                    </tr>
+                    <tr>
+                        <td>General client correspondence</td>
+                        <td>5 years after end of engagement</td>
+                        <td>Limitation Act, 1963</td>
+                    </tr>
+                    <tr>
+                        <td>Website enquiry forms</td>
+                        <td>2 years if no engagement results</td>
+                        <td>Internal policy</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>After the applicable retention period, records are securely deleted or destroyed in a manner that prevents reconstruction or unauthorised access.</p>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 7 -->
+        <div class="policy-section" id="s7">
+            <div class="section-header">
+                <div class="section-num">7</div>
+                <h2>Data Security</h2>
+            </div>
+            <p>We take the security of your personal and financial information seriously and implement appropriate technical and organisational measures to protect it against unauthorised access, loss, alteration, or disclosure.</p>
+
+            <ul>
+                <li>All digital documents are stored on password-protected, encrypted systems</li>
+                <li>Access to client files is restricted to authorised personnel involved in your engagement</li>
+                <li>Physical documents are stored in locked cabinets with restricted access</li>
+                <li>Secure email and communication channels are used for sensitive correspondence</li>
+                <li>Staff are trained on data confidentiality obligations and ICAI ethical standards</li>
+                <li>Regular security reviews of our systems and access controls</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>Please Note:</strong> While we implement robust security measures, no method of electronic transmission or storage is 100% secure. We encourage you to communicate sensitive financial information through secure, verified channels only. If you suspect any breach, please contact us immediately.
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 8 -->
+        <div class="policy-section" id="s8">
+            <div class="section-header">
+                <div class="section-num">8</div>
+                <h2>Your Rights</h2>
+            </div>
+            <p>Subject to applicable law and our professional obligations, you have the following rights with respect to your personal information held by us:</p>
+
+            <ul>
+                <li><strong>Right to Access</strong> — You may request a copy of the personal information we hold about you.</li>
+                <li><strong>Right to Correction</strong> — You may request correction of inaccurate or incomplete information.</li>
+                <li><strong>Right to Withdrawal of Consent</strong> — Where processing is based on consent, you may withdraw it at any time (note: this will not affect lawful processing carried out prior to withdrawal).</li>
+                <li><strong>Right to Data Portability</strong> — You may request your data in a structured, commonly used format where technically feasible.</li>
+                <li><strong>Right to Erasure</strong> — You may request deletion of your data, subject to our legal and professional retention obligations.</li>
+                <li><strong>Right to Grievance Redressal</strong> — You may raise a complaint or grievance regarding our handling of your data.</li>
+            </ul>
+
+            <p>To exercise any of these rights, please contact us in writing at <a href="mailto:info@shreyasum.com" style="color:#0066cc">info@shreyasum.com</a>. We will respond within 30 days of receiving your request.</p>
+
+            <div class="warning-box">
+                <strong>Important:</strong> Certain rights may be limited where we are required by law to retain or process your information — for example, where mandatory regulatory filings have already been made, or where records are required to be maintained under the Income Tax Act, Companies Act, or ICAI standards.
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 9 -->
+        <div class="policy-section" id="s9">
+            <div class="section-header">
+                <div class="section-num">9</div>
+                <h2>Cookies & Website Usage</h2>
+            </div>
+            <p>Our website uses minimal cookies to ensure proper functioning and to understand how visitors use the site. We do not use cookies for advertising, behavioural tracking, or profiling purposes.</p>
+
+            <h3>Types of Cookies We Use</h3>
+            <ul>
+                <li><strong>Essential Cookies</strong> — Required for the website to function correctly. These cannot be disabled.</li>
+                <li><strong>Analytics Cookies</strong> — Help us understand how visitors navigate the site (e.g., pages visited, time spent). Data is aggregated and anonymised.</li>
+            </ul>
+
+            <p>You may disable non-essential cookies through your browser settings at any time. Please note that disabling cookies may affect certain functionality of the website.</p>
+            <p>We do not use third-party advertising cookies, tracking pixels, or social media cookies on our website.</p>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 10 -->
+        <div class="policy-section" id="s10">
+            <div class="section-header">
+                <div class="section-num">10</div>
+                <h2>Third-Party Links</h2>
+            </div>
+            <p>Our website may contain links to external websites such as the Income Tax e-filing portal, MCA21 portal, GSTN portal, or ICAI resources. These are provided for your convenience.</p>
+            <p>We are not responsible for the privacy practices or content of any third-party websites. We encourage you to read the privacy policy of every website you visit. Clicking on a third-party link does not imply our endorsement of that website or its privacy practices.</p>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 11 -->
+        <div class="policy-section" id="s11">
+            <div class="section-header">
+                <div class="section-num">11</div>
+                <h2>Changes to This Policy</h2>
+            </div>
+            <p>We may update this Privacy Policy from time to time to reflect changes in law, regulatory requirements, or our practices. The revised policy will be posted on this page with an updated "Last Updated" date at the top.</p>
+            <p>We encourage you to review this policy periodically. For significant changes that materially affect your rights, we will notify active clients by email or through a notice on our website. Continued use of our services after such changes constitutes your acceptance of the revised policy.</p>
+        </div>
+
+        <hr class="section-divider">
+
+        <!-- Section 12 -->
+        <div class="policy-section" id="s12">
+            <div class="section-header">
+                <div class="section-num">12</div>
+                <h2>Contact Us</h2>
+            </div>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or the handling of your personal information, please contact us through any of the following:</p>
+
+            <div class="contact-card">
+                <h3>Shreyas U M & Associates</h3>
+                <p>Chartered Accountants — Privacy & Data Grievance Officer</p>
+                <div class="contact-row"><strong>📧 Email:</strong>&nbsp;<a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a></div>
+                <div class="contact-row"><strong>📞 Phone:</strong>&nbsp;<a href="tel:+919141635572" style="color:#7ab3f5">+91 91416 35572</a></div>
+            </div>
+        </div>
+
+        <!-- CTA Strip -->
+        <div class="cta-strip">
+            <h3>Have Questions About Your Data?</h3>
+            <p>We are committed to transparency. Reach out to us and we will respond within 30 business days.</p>
+            <a href="contact.html">Contact Our Team →</a>
+        </div>
+
+    </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="start-a-business/start-business-main.html">Start A Business</a></li>
+                    <li><a href="nri-services.html">NRI Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="privacy.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="Compliance/audit-compliance-main.html">Audit & Assurance</a></li>
+                    <li><a href="nri-services.html">NRI Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <div class="footer-info">
+                    <strong>Shreyas U M & Associates</strong><br>
+                    Chartered Accountants<br><br>
+                    <strong>📞 Phone:</strong> <a href="tel:+919141635572">+91 91416 35572</a><br>
+                    <strong>📧 Email:</strong> <a href="mailto:cashreyasum@gmail.com">cashreyasum@gmail.com</a><br>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2026 Shreyas U M & Associates. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Sticky header
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Scroll reveal for policy sections
+    const sections = document.querySelectorAll('.policy-section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 60);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    sections.forEach(s => observer.observe(s));
+
+    // Highlight active TOC link on scroll
+    const tocLinks = document.querySelectorAll('.toc a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        document.querySelectorAll('.policy-section').forEach(sec => {
+            if (window.scrollY >= sec.offsetTop - 130) current = sec.id;
+        });
+        tocLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === '#' + current ? '#0066cc' : '';
+            link.style.background = link.getAttribute('href') === '#' + current ? '#e8f0f7' : '';
+            link.style.borderLeftColor = link.getAttribute('href') === '#' + current ? '#0066cc' : 'transparent';
+        });
+    });
+</script>
+
+</body>
+</html>
